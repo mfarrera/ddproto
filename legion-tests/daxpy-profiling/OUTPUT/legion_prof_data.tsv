@@ -1,0 +1,252 @@
+level	start	end	color	title
+2	5009555	5009696	#ff00d7	Meta Scheduler initiated by="Operation UID=0" total=141 us start=5009555 us stop=5009696 us
+2	5009718	5009727	#ff000b	Meta State Analaysis initiated by="top_level UID=2" total=9 us start=5009718 us stop=5009727 us
+2	5009739	5009889	#d3ff00	Meta Task Physical Dependence Analysis initiated by="top_level UID=2" total=150 us start=5009739 us stop=5009889 us
+2	5009950	5009955	#ff0b00	Meta Decrement Pending Task initiated by="top_level UID=2" total=5 us start=5009950 us stop=5009955 us
+2	5010708	5011568	#d300ff	Meta Logical Dependence Analysis initiated by="Task Operation UID=6" total=860 us start=5010708 us stop=5011568 us
+2	5011596	5011640	#006600	Meta Post initiated by="top_level UID=2" total=44 us start=5011596 us stop=5011640 us
+2	5011710	5011767	#ff00d7	Meta Scheduler initiated by="Operation UID=0" total=57 us start=5011710 us stop=5011767 us
+2	5011781	5015664	#d3ff00	Meta Task Physical Dependence Analysis initiated by="Task Operation UID=6" total=3883 us start=5011781 us stop=5015664 us
+1	5012250	5012705	#d300ff	Meta Logical Dependence Analysis initiated by="Task Operation UID=8" total=455 us start=5012250 us stop=5012705 us
+1	5012727	5012740	#990000	Meta Deferred Execute initiated by="top_level UID=2" total=13 us start=5012727 us stop=5012740 us
+1	5012756	5013360	#37ff00	Meta Deferred Slice initiated by="Task Operation UID=6" total=604 us start=5012756 us stop=5013360 us
+1	5013376	5013407	#37ff00	Meta Deferred Slice initiated by="Task Operation UID=6" total=31 us start=5013376 us stop=5013407 us
+1	5013419	5015550	#37ff00	Meta Deferred Slice initiated by="Task Operation UID=6" total=2131 us start=5013419 us stop=5015550 us
+1	5015574	5015636	#37ff00	Meta Deferred Slice initiated by="Task Operation UID=6" total=62 us start=5015574 us stop=5015636 us
+2	5015677	5015733	#ff00d7	Meta Scheduler initiated by="Operation UID=0" total=56 us start=5015677 us stop=5015733 us
+2	5015746	5015753	#ff000b	Meta State Analaysis initiated by="Task Operation UID=8" total=7 us start=5015746 us stop=5015753 us
+2	5015764	5018425	#d3ff00	Meta Task Physical Dependence Analysis initiated by="Task Operation UID=8" total=2661 us start=5015764 us stop=5018425 us
+1	5016130	5017064	#d300ff	Meta Logical Dependence Analysis initiated by="Task Operation UID=10" total=934 us start=5016130 us stop=5017064 us
+1	5017094	5017098	#ff0b00	Meta Decrement Pending Task initiated by="init_field UID=32" total=4 us start=5017094 us stop=5017098 us
+1	5017110	5017171	#ff00d7	Meta Scheduler initiated by="Operation UID=0" total=61 us start=5017110 us stop=5017171 us
+1	5017184	5017217	#ff000b	Meta State Analaysis initiated by="Task Operation UID=26" total=33 us start=5017184 us stop=5017217 us
+1	5017232	5017637	#d3ff00	Meta Task Physical Dependence Analysis initiated by="Task Operation UID=26" total=405 us start=5017232 us stop=5017637 us
+1	5017659	5017720	#006600	Meta Post initiated by="init_field UID=32" total=61 us start=5017659 us stop=5017720 us
+1	5017796	5018180	#37ff00	Meta Deferred Slice initiated by="Task Operation UID=8" total=384 us start=5017796 us stop=5018180 us
+1	5018197	5018222	#37ff00	Meta Deferred Slice initiated by="Task Operation UID=8" total=25 us start=5018197 us stop=5018222 us
+1	5018234	5018323	#37ff00	Meta Deferred Slice initiated by="Task Operation UID=8" total=89 us start=5018234 us stop=5018323 us
+1	5018340	5018401	#37ff00	Meta Deferred Slice initiated by="Task Operation UID=8" total=61 us start=5018340 us stop=5018401 us
+2	5018444	5019275	#d300ff	Meta Logical Dependence Analysis initiated by="check UID=12" total=831 us start=5018444 us stop=5019275 us
+2	5019313	5019318	#ff0b00	Meta Decrement Pending Task initiated by="init_field UID=42" total=5 us start=5019313 us stop=5019318 us
+2	5019334	5019383	#006600	Meta Post initiated by="init_field UID=42" total=49 us start=5019334 us stop=5019383 us
+2	5019394	5019470	#990000	Meta Deferred Execute initiated by="init_field UID=32" total=76 us start=5019394 us stop=5019470 us
+2	5019523	5019528	#ff0b00	Meta Decrement Pending Task initiated by="init_field UID=44" total=5 us start=5019523 us stop=5019528 us
+2	5019539	5019603	#ff00d7	Meta Scheduler initiated by="Operation UID=0" total=64 us start=5019539 us stop=5019603 us
+2	5019616	5019634	#ff000b	Meta State Analaysis initiated by="Task Operation UID=36" total=18 us start=5019616 us stop=5019634 us
+2	5019647	5019978	#d3ff00	Meta Task Physical Dependence Analysis initiated by="Task Operation UID=36" total=331 us start=5019647 us stop=5019978 us
+2	5020000	5020049	#006600	Meta Post initiated by="init_field UID=44" total=49 us start=5020000 us stop=5020049 us
+2	5020112	5020199	#d300ff	Meta Logical Dependence Analysis initiated by="Deletion Operation UID=14" total=87 us start=5020112 us stop=5020199 us
+2	5020213	5020217	#ff000b	Meta State Analaysis initiated by="Deletion Operation UID=14" total=4 us start=5020213 us stop=5020217 us
+2	5020243	5020311	#990000	Meta Deferred Execute initiated by="init_field UID=42" total=68 us start=5020243 us stop=5020311 us
+2	5020345	5020350	#ff0b00	Meta Decrement Pending Task initiated by="init_field UID=50" total=5 us start=5020345 us stop=5020350 us
+2	5020366	5020413	#006600	Meta Post initiated by="init_field UID=50" total=47 us start=5020366 us stop=5020413 us
+2	5020425	5020490	#990000	Meta Deferred Execute initiated by="init_field UID=44" total=65 us start=5020425 us stop=5020490 us
+2	5020535	5020623	#d300ff	Meta Logical Dependence Analysis initiated by="Deletion Operation UID=16" total=88 us start=5020535 us stop=5020623 us
+2	5020637	5020641	#ff000b	Meta State Analaysis initiated by="Deletion Operation UID=16" total=4 us start=5020637 us stop=5020641 us
+2	5020651	5020694	#00ff63	Meta Operation Physical Dependence Analysis initiated by="Deletion Operation UID=14" total=43 us start=5020651 us stop=5020694 us
+2	5020731	5020796	#990000	Meta Deferred Execute initiated by="init_field UID=50" total=65 us start=5020731 us stop=5020796 us
+2	5020816	5020875	#d300ff	Meta Logical Dependence Analysis initiated by="Deletion Operation UID=18" total=59 us start=5020816 us stop=5020875 us
+2	5020888	5020892	#ff000b	Meta State Analaysis initiated by="Deletion Operation UID=18" total=4 us start=5020888 us stop=5020892 us
+2	5020902	5020937	#00ff63	Meta Operation Physical Dependence Analysis initiated by="Deletion Operation UID=16" total=35 us start=5020902 us stop=5020937 us
+2	5020971	5021026	#d300ff	Meta Logical Dependence Analysis initiated by="Deletion Operation UID=20" total=55 us start=5020971 us stop=5021026 us
+2	5021040	5021043	#ff000b	Meta State Analaysis initiated by="Deletion Operation UID=20" total=3 us start=5021040 us stop=5021043 us
+2	5021053	5021097	#00ff63	Meta Operation Physical Dependence Analysis initiated by="Deletion Operation UID=18" total=44 us start=5021053 us stop=5021097 us
+2	5021125	5021203	#d300ff	Meta Logical Dependence Analysis initiated by="Deletion Operation UID=22" total=78 us start=5021125 us stop=5021203 us
+2	5021215	5021219	#ff000b	Meta State Analaysis initiated by="Deletion Operation UID=22" total=4 us start=5021215 us stop=5021219 us
+2	5021229	5021268	#00ff63	Meta Operation Physical Dependence Analysis initiated by="Deletion Operation UID=20" total=39 us start=5021229 us stop=5021268 us
+2	5021296	5021337	#00ff63	Meta Operation Physical Dependence Analysis initiated by="Deletion Operation UID=22" total=41 us start=5021296 us stop=5021337 us
+2	5041512	5041957	#00ffff	Meta Send Version State initiated by="Operation UID=0" total=445 us start=5041512 us stop=5041957 us
+2	5042029	5042054	#00ffff	Meta Send Version State initiated by="Operation UID=0" total=25 us start=5042029 us stop=5042054 us
+2	5046351	5046376	#333399	Meta Deferred Mapping Trigger initiated by="Task Operation UID=10" total=25 us start=5046351 us stop=5046376 us
+2	5046388	5046445	#ff00d7	Meta Scheduler initiated by="Operation UID=0" total=57 us start=5046388 us stop=5046445 us
+2	5046457	5046475	#ff000b	Meta State Analaysis initiated by="Task Operation UID=10" total=18 us start=5046457 us stop=5046475 us
+2	5046486	5048266	#d3ff00	Meta Task Physical Dependence Analysis initiated by="Task Operation UID=10" total=1780 us start=5046486 us stop=5048266 us
+1	5047034	5047928	#37ff00	Meta Deferred Slice initiated by="Task Operation UID=10" total=894 us start=5047034 us stop=5047928 us
+1	5047945	5047971	#37ff00	Meta Deferred Slice initiated by="Task Operation UID=10" total=26 us start=5047945 us stop=5047971 us
+1	5047983	5048107	#37ff00	Meta Deferred Slice initiated by="Task Operation UID=10" total=124 us start=5047983 us stop=5048107 us
+1	5048122	5048242	#37ff00	Meta Deferred Slice initiated by="Task Operation UID=10" total=120 us start=5048122 us stop=5048242 us
+2	5048359	5048364	#ff0b00	Meta Decrement Pending Task initiated by="daxpy UID=60" total=5 us start=5048359 us stop=5048364 us
+2	5048376	5048436	#ff00d7	Meta Scheduler initiated by="Operation UID=0" total=60 us start=5048376 us stop=5048436 us
+2	5048449	5048492	#ff000b	Meta State Analaysis initiated by="Task Operation UID=54" total=43 us start=5048449 us stop=5048492 us
+2	5048504	5049208	#d3ff00	Meta Task Physical Dependence Analysis initiated by="Task Operation UID=54" total=704 us start=5048504 us stop=5049208 us
+2	5049236	5049286	#006600	Meta Post initiated by="daxpy UID=60" total=50 us start=5049236 us stop=5049286 us
+2	5049420	5049426	#ff0b00	Meta Decrement Pending Task initiated by="daxpy UID=62" total=6 us start=5049420 us stop=5049426 us
+2	5049443	5049535	#990000	Meta Deferred Execute initiated by="daxpy UID=60" total=92 us start=5049443 us stop=5049535 us
+2	5049659	5049708	#006600	Meta Post initiated by="daxpy UID=62" total=49 us start=5049659 us stop=5049708 us
+2	5050200	5050286	#990000	Meta Deferred Execute initiated by="daxpy UID=62" total=86 us start=5050200 us stop=5050286 us
+2	5050830	5050847	#00ffff	Meta Send Version State initiated by="Operation UID=0" total=17 us start=5050830 us stop=5050847 us
+2	5053045	5053067	#333399	Meta Deferred Mapping Trigger initiated by="Inter Close Operation UID=46" total=22 us start=5053045 us stop=5053067 us
+2	5053080	5053236	#ff000b	Meta State Analaysis initiated by="Inter Close Operation UID=46" total=156 us start=5053080 us stop=5053236 us
+2	5053250	5053270	#333399	Meta Deferred Mapping Trigger initiated by="Inter Close Operation UID=48" total=20 us start=5053250 us stop=5053270 us
+2	5053281	5053364	#ff000b	Meta State Analaysis initiated by="Inter Close Operation UID=48" total=83 us start=5053281 us stop=5053364 us
+2	5055248	5056591	#00ff63	Meta Operation Physical Dependence Analysis initiated by="Inter Close Operation UID=46" total=1343 us start=5055248 us stop=5056591 us
+2	5057023	5057821	#00ff63	Meta Operation Physical Dependence Analysis initiated by="Inter Close Operation UID=48" total=798 us start=5057023 us stop=5057821 us
+2	5057858	5057881	#333399	Meta Deferred Mapping Trigger initiated by="check UID=12" total=23 us start=5057858 us stop=5057881 us
+2	5057904	5057964	#ff00d7	Meta Scheduler initiated by="Operation UID=0" total=60 us start=5057904 us stop=5057964 us
+2	5057977	5057985	#ff000b	Meta State Analaysis initiated by="check UID=12" total=8 us start=5057977 us stop=5057985 us
+2	5057996	5058651	#d3ff00	Meta Task Physical Dependence Analysis initiated by="check UID=12" total=655 us start=5057996 us stop=5058651 us
+2	5058707	5058712	#0000FF	Meta Deferred Complete initiated by="top_level UID=2" total=5 us start=5058707 us stop=5058712 us
+2	5058729	5058733	#ff0b00	Meta Decrement Pending Task initiated by="check UID=12" total=4 us start=5058729 us stop=5058733 us
+2	5059393	5059416	#006600	Meta Post initiated by="check UID=12" total=23 us start=5059393 us stop=5059416 us
+2	5059471	5061284	#990000	Meta Deferred Execute initiated by="check UID=12" total=1813 us start=5059471 us stop=5061284 us
+2	5061300	5061307	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=7 us start=5061300 us stop=5061307 us
+2	5061318	5061324	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5061318 us stop=5061324 us
+2	5061334	5061341	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=7 us start=5061334 us stop=5061341 us
+2	5061351	5061357	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5061351 us stop=5061357 us
+2	5061368	5061374	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5061368 us stop=5061374 us
+2	5061384	5061391	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=7 us start=5061384 us stop=5061391 us
+2	5061401	5061407	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5061401 us stop=5061407 us
+2	5061418	5061424	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5061418 us stop=5061424 us
+2	5061434	5061441	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=7 us start=5061434 us stop=5061441 us
+2	5061451	5061457	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5061451 us stop=5061457 us
+2	5061468	5061474	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5061468 us stop=5061474 us
+2	5061485	5061491	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5061485 us stop=5061491 us
+2	5061501	5061507	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5061501 us stop=5061507 us
+2	5061518	5061524	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5061518 us stop=5061524 us
+2	5061534	5061540	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5061534 us stop=5061540 us
+2	5061898	5061939	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=41 us start=5061898 us stop=5061939 us
+2	5061955	5061964	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=9 us start=5061955 us stop=5061964 us
+2	5061976	5061993	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=17 us start=5061976 us stop=5061993 us
+2	5062005	5062020	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=15 us start=5062005 us stop=5062020 us
+2	5062032	5062105	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=73 us start=5062032 us stop=5062105 us
+2	5062118	5062135	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=17 us start=5062118 us stop=5062135 us
+2	5062147	5062174	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=27 us start=5062147 us stop=5062174 us
+2	5062188	5062203	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=15 us start=5062188 us stop=5062203 us
+2	5062215	5062280	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=65 us start=5062215 us stop=5062280 us
+2	5062292	5062312	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=20 us start=5062292 us stop=5062312 us
+2	5062324	5062339	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=15 us start=5062324 us stop=5062339 us
+2	5062351	5062462	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=111 us start=5062351 us stop=5062462 us
+2	5062475	5062505	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=30 us start=5062475 us stop=5062505 us
+2	5062519	5062535	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=16 us start=5062519 us stop=5062535 us
+2	5062547	5062616	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=69 us start=5062547 us stop=5062616 us
+2	5062629	5062693	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=64 us start=5062629 us stop=5062693 us
+2	5062705	5062769	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=64 us start=5062705 us stop=5062769 us
+2	5062781	5062808	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=27 us start=5062781 us stop=5062808 us
+2	5062822	5062847	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=25 us start=5062822 us stop=5062847 us
+2	5062860	5062925	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=65 us start=5062860 us stop=5062925 us
+2	5062938	5063001	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=63 us start=5062938 us stop=5063001 us
+2	5063014	5063076	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=62 us start=5063014 us stop=5063076 us
+2	5063089	5063117	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=28 us start=5063089 us stop=5063117 us
+2	5063131	5063155	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=24 us start=5063131 us stop=5063155 us
+2	5063168	5063300	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=132 us start=5063168 us stop=5063300 us
+2	5063313	5063339	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=26 us start=5063313 us stop=5063339 us
+2	5063352	5063417	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=65 us start=5063352 us stop=5063417 us
+2	5063429	5063510	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=81 us start=5063429 us stop=5063510 us
+2	5063713	5063720	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=7 us start=5063713 us stop=5063720 us
+4	5009906	5011299	#eb00ff	top_level UID=2 total=1393 us start=5009906 us stop=5011299 us
+4	5013364	5015477	#ff008f	init_field UID=32 total=2113 us start=5013364 us stop=5015477 us
+4	5018185	5018311	#ff008f	init_field UID=44 total=126 us start=5018185 us stop=5018311 us
+4	5047935	5048146	#00ffb7	daxpy UID=60 total=211 us start=5047935 us stop=5048146 us
+4	5058679	5059388	#5b00ff	check UID=12 total=709 us start=5058679 us stop=5059388 us
+6	5017644	5017751	#ff008f	init_field UID=42 total=107 us start=5017644 us stop=5017751 us
+6	5019982	5020077	#ff008f	init_field UID=50 total=95 us start=5019982 us stop=5020077 us
+6	5049211	5049410	#00ffb7	daxpy UID=62 total=199 us start=5049211 us stop=5049410 us
+9	5022532	5022922	#ff00d7	Meta Scheduler initiated by="Operation UID=0" total=390 us start=5022532 us stop=5022922 us
+9	5022937	5040692	#ff000b	Meta State Analaysis initiated by="init_field UID=1" total=17755 us start=5022937 us stop=5040692 us
+8	5023716	5023778	#ff00d7	Meta Scheduler initiated by="Operation UID=0" total=62 us start=5023716 us stop=5023778 us
+9	5023792	5040882	#ff000b	Meta State Analaysis initiated by="init_field UID=5" total=17090 us start=5023792 us stop=5040882 us
+8	5023948	5024026	#ff00d7	Meta Scheduler initiated by="Operation UID=0" total=78 us start=5023948 us stop=5024026 us
+9	5024039	5041148	#ff000b	Meta State Analaysis initiated by="init_field UID=7" total=17109 us start=5024039 us stop=5041148 us
+8	5024654	5024718	#ff00d7	Meta Scheduler initiated by="Operation UID=0" total=64 us start=5024654 us stop=5024718 us
+9	5024744	5041295	#ff000b	Meta State Analaysis initiated by="init_field UID=9" total=16551 us start=5024744 us stop=5041295 us
+9	5042468	5044876	#d3ff00	Meta Task Physical Dependence Analysis initiated by="init_field UID=1" total=2408 us start=5042468 us stop=5044876 us
+9	5044894	5045478	#d3ff00	Meta Task Physical Dependence Analysis initiated by="init_field UID=5" total=584 us start=5044894 us stop=5045478 us
+9	5045492	5045921	#d3ff00	Meta Task Physical Dependence Analysis initiated by="init_field UID=7" total=429 us start=5045492 us stop=5045921 us
+9	5045938	5046325	#d3ff00	Meta Task Physical Dependence Analysis initiated by="init_field UID=9" total=387 us start=5045938 us stop=5046325 us
+9	5046346	5046357	#ff0b00	Meta Decrement Pending Task initiated by="init_field UID=11" total=11 us start=5046346 us stop=5046357 us
+9	5046369	5046398	#006600	Meta Post initiated by="init_field UID=11" total=29 us start=5046369 us stop=5046398 us
+9	5046772	5046777	#ff0b00	Meta Decrement Pending Task initiated by="init_field UID=13" total=5 us start=5046772 us stop=5046777 us
+9	5046790	5046811	#006600	Meta Post initiated by="init_field UID=13" total=21 us start=5046790 us stop=5046811 us
+9	5046859	5046863	#ff0b00	Meta Decrement Pending Task initiated by="init_field UID=15" total=4 us start=5046859 us stop=5046863 us
+9	5046874	5046894	#006600	Meta Post initiated by="init_field UID=15" total=20 us start=5046874 us stop=5046894 us
+9	5046939	5046943	#ff0b00	Meta Decrement Pending Task initiated by="init_field UID=17" total=4 us start=5046939 us stop=5046943 us
+9	5046959	5046979	#006600	Meta Post initiated by="init_field UID=17" total=20 us start=5046959 us stop=5046979 us
+9	5047015	5047708	#990000	Meta Deferred Execute initiated by="init_field UID=11" total=693 us start=5047015 us stop=5047708 us
+9	5047736	5047828	#990000	Meta Deferred Execute initiated by="init_field UID=13" total=92 us start=5047736 us stop=5047828 us
+9	5047854	5047939	#990000	Meta Deferred Execute initiated by="init_field UID=15" total=85 us start=5047854 us stop=5047939 us
+9	5047964	5048060	#990000	Meta Deferred Execute initiated by="init_field UID=17" total=96 us start=5047964 us stop=5048060 us
+9	5048216	5048276	#ff00d7	Meta Scheduler initiated by="Operation UID=0" total=60 us start=5048216 us stop=5048276 us
+9	5048289	5050783	#ff000b	Meta State Analaysis initiated by="daxpy UID=19" total=2494 us start=5048289 us stop=5050783 us
+8	5048576	5048634	#ff00d7	Meta Scheduler initiated by="Operation UID=0" total=58 us start=5048576 us stop=5048634 us
+9	5048649	5050962	#ff000b	Meta State Analaysis initiated by="daxpy UID=21" total=2313 us start=5048649 us stop=5050962 us
+9	5051030	5052306	#d3ff00	Meta Task Physical Dependence Analysis initiated by="daxpy UID=19" total=1276 us start=5051030 us stop=5052306 us
+9	5052328	5053056	#d3ff00	Meta Task Physical Dependence Analysis initiated by="daxpy UID=21" total=728 us start=5052328 us stop=5053056 us
+9	5053087	5053115	#ff0b00	Meta Decrement Pending Task initiated by="daxpy UID=23" total=28 us start=5053087 us stop=5053115 us
+9	5053140	5053162	#006600	Meta Post initiated by="daxpy UID=23" total=22 us start=5053140 us stop=5053162 us
+9	5053212	5053216	#ff0b00	Meta Decrement Pending Task initiated by="daxpy UID=25" total=4 us start=5053212 us stop=5053216 us
+9	5053435	5053556	#990000	Meta Deferred Execute initiated by="daxpy UID=23" total=121 us start=5053435 us stop=5053556 us
+9	5053579	5053600	#006600	Meta Post initiated by="daxpy UID=25" total=21 us start=5053579 us stop=5053600 us
+9	5053646	5053820	#00ffff	Meta Send Version State initiated by="Operation UID=0" total=174 us start=5053646 us stop=5053820 us
+9	5053869	5053984	#990000	Meta Deferred Execute initiated by="daxpy UID=25" total=115 us start=5053869 us stop=5053984 us
+9	5054006	5054023	#00ffff	Meta Send Version State initiated by="Operation UID=0" total=17 us start=5054006 us stop=5054023 us
+9	5054070	5054153	#00ffff	Meta Send Version State initiated by="Operation UID=0" total=83 us start=5054070 us stop=5054153 us
+9	5054196	5054248	#00ffff	Meta Send Version State initiated by="Operation UID=0" total=52 us start=5054196 us stop=5054248 us
+9	5054305	5054373	#00ffff	Meta Send Version State initiated by="Operation UID=0" total=68 us start=5054305 us stop=5054373 us
+9	5054435	5054486	#00ffff	Meta Send Version State initiated by="Operation UID=0" total=51 us start=5054435 us stop=5054486 us
+9	5054545	5054560	#00ffff	Meta Send Version State initiated by="Operation UID=0" total=15 us start=5054545 us stop=5054560 us
+9	5054613	5054655	#00ffff	Meta Send Version State initiated by="Operation UID=0" total=42 us start=5054613 us stop=5054655 us
+9	5054710	5054750	#00ffff	Meta Send Version State initiated by="Operation UID=0" total=40 us start=5054710 us stop=5054750 us
+9	5063926	5064040	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=114 us start=5063926 us stop=5064040 us
+9	5064054	5064156	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=102 us start=5064054 us stop=5064156 us
+9	5064170	5064272	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=102 us start=5064170 us stop=5064272 us
+9	5064285	5064393	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=108 us start=5064285 us stop=5064393 us
+9	5064406	5064508	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=102 us start=5064406 us stop=5064508 us
+9	5064521	5064624	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=103 us start=5064521 us stop=5064624 us
+9	5064638	5064739	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=101 us start=5064638 us stop=5064739 us
+9	5064752	5064858	#0057ff	Meta Garbage Collection initiated by="Operation UID=0" total=106 us start=5064752 us stop=5064858 us
+9	5064910	5064917	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=7 us start=5064910 us stop=5064917 us
+9	5064928	5064934	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5064928 us stop=5064934 us
+9	5064954	5064960	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5064954 us stop=5064960 us
+9	5064971	5064976	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=5 us start=5064971 us stop=5064976 us
+9	5064996	5065002	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5064996 us stop=5065002 us
+9	5065012	5065018	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5065012 us stop=5065018 us
+9	5065038	5065044	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5065038 us stop=5065044 us
+9	5065054	5065060	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5065054 us stop=5065060 us
+9	5065079	5065085	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5065079 us stop=5065085 us
+9	5065096	5065101	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=5 us start=5065096 us stop=5065101 us
+9	5065121	5065127	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5065121 us stop=5065127 us
+9	5065142	5065148	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5065142 us stop=5065148 us
+9	5065168	5065174	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5065168 us stop=5065174 us
+9	5065184	5065190	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5065184 us stop=5065190 us
+9	5065205	5065211	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5065205 us stop=5065211 us
+9	5065221	5065227	#006fff	Meta Deferred Recycle initiated by="Operation UID=0" total=6 us start=5065221 us stop=5065227 us
+11	5044878	5045173	#ff008f	init_field UID=11 total=295 us start=5044878 us stop=5045173 us
+11	5045922	5046027	#ff008f	init_field UID=15 total=105 us start=5045922 us stop=5046027 us
+11	5052805	5053019	#00ffb7	daxpy UID=23 total=214 us start=5052805 us stop=5053019 us
+13	5045532	5045688	#ff008f	init_field UID=13 total=156 us start=5045532 us stop=5045688 us
+13	5046362	5046473	#ff008f	init_field UID=17 total=111 us start=5046362 us stop=5046473 us
+13	5053109	5053325	#00ffb7	daxpy UID=25 total=216 us start=5053109 us stop=5053325 us
+17	5047650	5047728	#00ffb7	Copy initiated by="daxpy UID=60" size=4096 total=78 us start=5047650 us stop=5047728 us
+17	5049005	5049030	#00ffb7	Copy initiated by="daxpy UID=62" size=4096 total=25 us start=5049005 us stop=5049030 us
+21	5057453	5057487	#eb00ff	Copy initiated by="top_level UID=2" size=2048 total=34 us start=5057453 us stop=5057487 us
+21	5055837	5055889	#eb00ff	Copy initiated by="top_level UID=2" size=4096 total=52 us start=5055837 us stop=5055889 us
+21	5057285	5057315	#eb00ff	Copy initiated by="top_level UID=2" size=2048 total=30 us start=5057285 us stop=5057315 us
+21	5056025	5056061	#eb00ff	Copy initiated by="top_level UID=2" size=4096 total=36 us start=5056025 us stop=5056061 us
+25	5058373	5058469	#5b00ff	Copy initiated by="check UID=12" size=16384 total=96 us start=5058373 us stop=5058469 us
+25	5058492	5058529	#5b00ff	Copy initiated by="check UID=12" size=8192 total=37 us start=5058492 us stop=5058529 us
+29	5056721	5056799	#eb00ff	Copy initiated by="top_level UID=2" size=4096 total=78 us start=5056721 us stop=5056799 us
+29	5057643	5057672	#eb00ff	Copy initiated by="top_level UID=2" size=2048 total=29 us start=5057643 us stop=5057672 us
+29	5057736	5057765	#eb00ff	Copy initiated by="top_level UID=2" size=2048 total=29 us start=5057736 us stop=5057765 us
+29	5056828	5056865	#eb00ff	Copy initiated by="top_level UID=2" size=4096 total=37 us start=5056828 us stop=5056865 us
+33	5052065	5052761	#00ffb7	Copy initiated by="daxpy UID=23" size=4096 total=696 us start=5052065 us stop=5052761 us
+33	5052806	5052829	#00ffb7	Copy initiated by="daxpy UID=25" size=4096 total=23 us start=5052806 us stop=5052829 us
+42	5017967	5062648	#ff008f	Instance 0xe000000000000002L Size=2KB Created by="init_field UID=44" total=44681 us created=5017967 us destroyed=5062648 us
+41	5019790	5062724	#ff008f	Instance 0xe000000000000003L Size=2KB Created by="init_field UID=50" total=42934 us created=5019790 us destroyed=5062724 us
+37	5048830	5063032	#00ffb7	Instance 0xe000000000000007L Size=2KB Created by="daxpy UID=62" total=14202 us created=5048830 us destroyed=5063032 us
+36	5058142	5062880	#5b00ff	Instance 0xe000000000000008L Size=16KB Created by="check UID=12" total=4738 us created=5058142 us destroyed=5062880 us
+35	5058232	5062957	#5b00ff	Instance 0xe000000000000009L Size=8KB Created by="check UID=12" total=4725 us created=5058232 us destroyed=5062957 us
+39	5047387	5063447	#00ffb7	Instance 0xe000000000000005L Size=2KB Created by="daxpy UID=60" total=16060 us created=5047387 us destroyed=5063447 us
+38	5048744	5062055	#00ffb7	Instance 0xe000000000000006L Size=4KB Created by="daxpy UID=62" total=13311 us created=5048744 us destroyed=5062055 us
+44	5013031	5062233	#ff008f	Instance 0xe000000000000000L Size=2KB Created by="init_field UID=32" total=49202 us created=5013031 us destroyed=5062233 us
+40	5047282	5063371	#00ffb7	Instance 0xe000000000000004L Size=4KB Created by="daxpy UID=60" total=16089 us created=5047282 us destroyed=5063371 us
+43	5017421	5062570	#ff008f	Instance 0xe000000000000001L Size=2KB Created by="init_field UID=42" total=45149 us created=5017421 us destroyed=5062570 us
+48	5055322	5062371	#eb00ff	Instance 0xe0000fff00000000L Size=16KB Created by="top_level UID=2" total=7049 us created=5055322 us destroyed=5062371 us
+47	5057071	5063196	#eb00ff	Instance 0xe0000fff00000001L Size=8KB Created by="top_level UID=2" total=6125 us created=5057071 us destroyed=5063196 us
+50	5052646	5064771	#00ffb7	Instance 0xe000100000000007L Size=2KB Created by="daxpy UID=25" total=12125 us created=5052646 us destroyed=5064771 us
+53	5051253	5063950	#00ffb7	Instance 0xe000100000000004L Size=4KB Created by="daxpy UID=23" total=12697 us created=5051253 us destroyed=5063950 us
+57	5043486	5064074	#ff008f	Instance 0xe000100000000000L Size=2KB Created by="init_field UID=11" total=20588 us created=5043486 us destroyed=5064074 us
+56	5045254	5064190	#ff008f	Instance 0xe000100000000001L Size=2KB Created by="init_field UID=13" total=18936 us created=5045254 us destroyed=5064190 us
+55	5045672	5064306	#ff008f	Instance 0xe000100000000002L Size=2KB Created by="init_field UID=15" total=18634 us created=5045672 us destroyed=5064306 us
+54	5046111	5064426	#ff008f	Instance 0xe000100000000003L Size=2KB Created by="init_field UID=17" total=18315 us created=5046111 us destroyed=5064426 us
+52	5051354	5064542	#00ffb7	Instance 0xe000100000000005L Size=2KB Created by="daxpy UID=23" total=13188 us created=5051354 us destroyed=5064542 us
+51	5052559	5064658	#00ffb7	Instance 0xe000100000000006L Size=4KB Created by="daxpy UID=25" total=12099 us created=5052559 us destroyed=5064658 us

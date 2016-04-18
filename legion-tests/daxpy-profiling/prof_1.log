@@ -1,0 +1,203 @@
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 0 Scheduler
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 1 Post-Task Execution
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 2 Deferred Mapping Trigger
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 3 Deferred Resolution Trigger
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 4 Deferred Execution Trigger
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 5 Deferred Post Mapped
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 6 Deferred Execute
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 7 Deferred Complete
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 8 Deferred Commit
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 9 Reclaim Local Field
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 10 Garbage Collection
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 11 Logical Dependence Analysis
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 12 Operation Physical Dependence Analysis
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 13 Task Physical Dependence Analysis
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 14 Deferred Recycle
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 15 Deferred Slice
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 16 Must Individual Task Dependence Analysis
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 17 Must Index Task Dependence Analysis
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 18 Must Task Physical Dependence Analysis
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 19 Must Task Distribution
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 20 Must Task Launch
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 21 Deferred Future Set
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 22 Deferred Future Map Set
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 23 Resolve Future Predicate
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 24 Update MPI Rank Info
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 25 Contribute Collective
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 26 State Analaysis
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 27 Mapper Task
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 28 Disjointness Test
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 29 Partition Independence Test
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 30 Index Space Independence Test
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 31 Remove Pending Child
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 32 Decrement Pending Task
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 33 Send Version State
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 34 Add to Dependence Queue
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 35 Window Wait
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 36 Issue Frame
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 37 Legion Continuation
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 38 Task Impl Semantic Request
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 39 Index Space Semantic Request
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 40 Index Partition Semantic Request
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 41 Field Space Semantic Request
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 42 Field Semantic Request
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 43 Region Semantic Request
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 44 Partition Semantic Request
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 45 Remote Message
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 46 Shutdown Attempt
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 47 Shutdown Notification
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Meta Desc 48 Shutdown Response
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 0 Mapping
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 1 Copy
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 2 Fence
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 3 Frame
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 4 Deletion
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 5 Inter Close
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 6 Read Close
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 7 Post Close
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 8 Virtual Close
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 9 Acquire
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 10 Release
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 11 Dynamic Collective
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 12 Future Predicate
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 13 Not Predicate
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 14 And Predicate
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 15 Or Predicate
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 16 Must Epoch
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 17 Pending Partition
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 18 Dependent Partition
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 19 Fill
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 20 Attach
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 21 Detach
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 22 Timing
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 23 Trace Capture
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 24 Trace Complete
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Op Desc 25 Task
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Proc Desc 8000000000000000 3
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Proc Desc 8000000000000001 2
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Proc Desc 8000000000000002 2
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Proc Desc 8000100000000000 3
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Proc Desc 8000100000000001 2
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Proc Desc 8000100000000002 2
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Mem Desc 6000000000000000 1 68157440000
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Mem Desc 6000000100000000 8 0
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Mem Desc 60000fff00000000 0 4141875200
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Mem Desc 6000100000000000 1 68157440000
+[1 - 7f3d24535700] {2}{legion_prof}: Prof Mem Desc 6000100100000000 8 0
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Kind 537090128 unnamed_task_537090128
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Operation 1 25
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Operation 3 25
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Operation 5 25
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Operation 7 25
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Operation 9 25
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Operation 11 25
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Operation 13 25
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Operation 15 25
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Operation 17 25
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Operation 19 25
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Operation 21 25
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Operation 23 25
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Operation 25 25
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Multi 1 1
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Multi 5 1
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Multi 7 1
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Multi 9 1
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Multi 19 2
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Multi 21 2
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Info 11 9 8000100000000001 5044859307 5044860933 5044878951 5045173687
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Info 13 9 8000100000000002 5045462697 5045464221 5045532089 5045688255
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Info 15 9 8000100000000001 5045904948 5045906529 5045922346 5046027538
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Info 17 9 8000100000000002 5046309904 5046311448 5046362458 5046473724
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Info 23 10 8000100000000001 5052298771 5052778140 5052805698 5053019255
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Info 25 10 8000100000000002 5053040471 5053042090 5053109233 5053325757
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 0 8000100000000000 5022509641 5022511382 5022532533 5022922601
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 0 8000100000000000 5023522723 5023524161 5023716362 5023778724
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 0 8000100000000000 5023916757 5023928544 5023948608 5024026443
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 0 8000100000000000 5024170353 5024172138 5024654008 5024718014
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 1 26 8000100000000000 5022904386 5022905890 5022937194 5040692931
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 5 26 8000100000000000 5023762134 5023763584 5023792016 5040882106
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 7 26 8000100000000000 5023990521 5023991781 5024039979 5041148162
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 9 26 8000100000000000 5024701468 5024702870 5024744285 5041295919
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 1 13 8000100000000000 5022914594 5042367886 5042468835 5044876284
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 5 13 8000100000000000 5023771656 5042384801 5044894135 5045478084
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 7 13 8000100000000000 5024018275 5042387554 5045492802 5045921412
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 9 13 8000100000000000 5024710979 5042388789 5045938694 5046325202
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 11 32 8000100000000000 5044889228 5044890807 5046346660 5046357032
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 11 1 8000100000000000 5045169232 5045171226 5046369236 5046398343
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 13 32 8000100000000000 5045565529 5045568314 5046772658 5046777183
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 13 1 8000100000000000 5045684583 5045685934 5046790114 5046811424
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 15 32 8000100000000000 5045930036 5045931295 5046859305 5046863427
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 15 1 8000100000000000 5046023938 5046025668 5046874690 5046894384
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 17 32 8000100000000000 5046380053 5046381800 5046939402 5046943560
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 17 1 8000100000000000 5046470036 5046471439 5046959468 5046979124
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 11 6 8000100000000000 5046384419 5046750031 5047015042 5047708561
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 13 6 8000100000000000 5046803848 5046841717 5047736951 5047828292
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 15 6 8000100000000000 5046886934 5046918260 5047854429 5047939921
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 17 6 8000100000000000 5046971765 5047002979 5047964775 5048060078
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 0 8000100000000000 5048188055 5048189456 5048216599 5048276730
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 0 8000100000000000 5048554884 5048556252 5048576767 5048634138
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 19 26 8000100000000000 5048260215 5048261670 5048289775 5050783900
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 21 26 8000100000000000 5048618279 5048619618 5048649320 5050962989
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 19 13 8000100000000000 5048269068 5051014539 5051030180 5052306882
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 21 13 8000100000000000 5048627293 5051023654 5052328107 5053056242
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 23 32 8000100000000000 5052814121 5052815404 5053087849 5053115967
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 23 1 8000100000000000 5053015847 5053017148 5053140180 5053162538
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 25 32 8000100000000000 5053121090 5053123431 5053212469 5053216552
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 23 6 8000100000000000 5053154872 5053194972 5053435633 5053556193
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 25 1 8000100000000000 5053321646 5053323079 5053579078 5053600295
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 33 8000100000000000 5053414899 5053416432 5053646050 5053820091
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 25 6 8000100000000000 5053592703 5053632892 5053869906 5053984832
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 33 8000100000000000 5053848540 5053849802 5054006998 5054023876
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 33 8000100000000000 5054048769 5054050025 5054070260 5054153379
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 33 8000100000000000 5054180310 5054181556 5054196800 5054248058
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 33 8000100000000000 5054273988 5054275165 5054305318 5054373973
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 33 8000100000000000 5054400364 5054401557 5054435513 5054486480
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 33 8000100000000000 5054511303 5054512743 5054545300 5054560607
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 33 8000100000000000 5054584456 5054585659 5054613212 5054655435
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 33 8000100000000000 5054680321 5054681495 5054710318 5054750380
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 10 8000100000000000 5063846170 5063847580 5063926319 5064040238
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 10 8000100000000000 5063857692 5063858838 5064054618 5064156759
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 10 8000100000000000 5063864553 5063865582 5064170537 5064272577
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 10 8000100000000000 5063871165 5063872183 5064285999 5064393270
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 10 8000100000000000 5063877698 5063878719 5064406786 5064508712
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 10 8000100000000000 5063883961 5063885046 5064521944 5064624838
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 10 8000100000000000 5063890889 5063891917 5064638012 5064739756
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 10 8000100000000000 5063897235 5063898319 5064752868 5064858023
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5063999553 5064064794 5064910312 5064917473
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064034807 5064078494 5064928819 5064934730
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064119781 5064182127 5064954817 5064960723
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064151549 5064193876 5064971002 5064976854
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064235529 5064299679 5064996674 5065002499
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064267378 5064311410 5065012855 5065018760
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064354748 5064417061 5065038512 5065044416
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064388054 5064428492 5065054680 5065060470
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064470738 5064534430 5065079967 5065085847
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064503499 5064544384 5065096195 5065101945
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064586693 5064656437 5065121546 5065127464
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064619555 5064667639 5065142755 5065148648
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064702768 5064786693 5065168293 5065174232
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064734573 5064797193 5065184430 5065190343
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064814676 5064902292 5065205535 5065211420
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Meta Info 0 14 8000100000000000 5064846897 5064913407 5065221570 5065227345
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Copy Info 23 6000100000000000 6000100000000000 4096 5051871716 5052021670 5052065693 5052761480
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Copy Info 25 6000100000000000 6000100000000000 4096 5052786455 5052790115 5052806245 5052829375
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Inst Info 23 e000100000000004 6000100000000000 4096 5051253781 5063950166
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Inst Info 11 e000100000000000 6000100000000000 2048 5043486628 5064074698
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Inst Info 13 e000100000000001 6000100000000000 2048 5045254180 5064190399
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Inst Info 15 e000100000000002 6000100000000000 2048 5045672295 5064306049
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Inst Info 17 e000100000000003 6000100000000000 2048 5046111145 5064426439
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Inst Info 23 e000100000000005 6000100000000000 2048 5051354008 5064542026
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Inst Info 25 e000100000000006 6000100000000000 4096 5052559862 5064658515
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Inst Info 25 e000100000000007 6000100000000000 2048 5052646149 5064771410
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Kind 0 unnamed_task_0
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Kind 0 top_level
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Kind 1 unnamed_task_1
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Kind 1 init_field
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Kind 2 unnamed_task_2
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Kind 2 daxpy
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Kind 3 unnamed_task_3
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Kind 3 check
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Variant 0 8 unnamed_variant_8
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Variant 1 9 unnamed_variant_9
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Variant 2 10 unnamed_variant_10
+[1 - 7f3d24539700] {2}{legion_prof}: Prof Task Variant 3 11 unnamed_variant_11

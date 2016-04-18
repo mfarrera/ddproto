@@ -1,0 +1,62 @@
+#!/bin/bash
+#!
+#! Example SLURM job script for Wilkes (Ivy Bridge, Connect-IB, K20c)
+#! Last updated: Sat Apr 18 13:05:27 BST 2015
+#!
+
+#!#############################################################
+#!#### Modify the options in this section as appropriate ######
+#!#############################################################
+
+#! sbatch directives begin here ###############################
+#! Name of the job:
+#SBATCH -J machine_info
+#! Redirect stderr and stdout
+#SBATCH --output OUTPUT/machine_info-wilkes.%j.out
+#SBATCH --error OUTPUT/machine_info-wilkes.%j.err
+#! Which project should be charged (NB Wilkes projects end in '-GPU'):
+#SBATCH -A CORTEX-GPU
+#! How many whole nodes should be allocated?
+#SBATCH --nodes=2
+#! How many (MPI) tasks will there be in total? (<=nodes*12)
+#SBATCH --ntasks=2
+#! How much wallclock time will be required?
+#SBATCH --time=00:02:00
+#! What types of email messages do you wish to receive?
+#SBATCH --mail-type=FAIL
+#! Uncomment this to prevent the job from being requeued (e.g. if
+#! interrupted by node failure or system downtime):
+#SBATCH --no-requeue
+
+# Request the nodes in exclusive mode
+##SBATCH --exclusive
+# Request the nodes to be on the same switch
+##SBATCH --switches=1
+
+
+#! Do not change:
+#SBATCH --qos GPU1
+#SBATCH -p tesla
+
+#! sbatch directives end here (put any additional directives above this line)
+#! Number of nodes and tasks per node allocated by SLURM (do not change):
+numnodes=$SLURM_JOB_NUM_NODES
+#! Full path to application executable: 
+#application="./fibonacci -cat legion_prof -level 2 -hl:prof 2"
+application="./machine_info" 
+
+#! Run options for the application:
+options="-cat legion_prof -level 2 -hl:prof 2 "
+options=""
+. /etc/profile.d/modules.sh                # Leave this line (enables the module command)
+module load gcc/5.2.0
+
+export PATH=/home/mf582/GASNETNoMPI/bin/:$PATH
+CMD="gasnetrun_mxm -n $numnodes -N $numnodes -E PATH,LD_LIBRARY_PATH -v -k -spawner=ssh  $application $options"
+echo $CMD
+echo "Randomize value is:"
+cat /proc/sys/kernel/randomize_va_space
+cat /proc/cpuinfo
+cat /proc/meminfo
+ldd $application
+eval $CMD 

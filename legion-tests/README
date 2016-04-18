@@ -1,0 +1,9 @@
+module load gcc/5.2.0
+export LG_RT_DIR="$HOME/LegionRT/legion/runtime"
+
+edit runtime/runtime.mk
+to point to gasnet installation and gpu
+
+Edit application makefile to set up SHARED_LOWLEVEL
+Edit application makefile to tell we want to use GASNET
+and also OUTFILE GEN_SRC ...
