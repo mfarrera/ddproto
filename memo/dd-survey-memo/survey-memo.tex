@@ -1,0 +1,126 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{microtype}\usepackage{mathptmx}
+\usepackage{sdp_doc} % SDP style file
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage[pdfborderstyle={/S/U/W 1}]{hyperref}
+\usepackage{graphicx}
+\usepackage{amssymb,amsmath}
+\usepackage{subfig}
+
+\usepackage{xcolor}
+\usepackage[mark]{gitinfo2}
+
+
+% Configuration info
+\newcommand{\bigdoctitle}{Is a data-driven programming model a viable solution for SDP?: a survey on available data-driven systems}
+\newcommand{\docnr}{}
+\newcommand{\context}{}
+\newcommand{\revision}{git-\gitAbbrevHash}
+\newcommand{\docauthor}{Montse Farreras}
+\newcommand{\leadauthor}{Montse Farreras}
+\newcommand{\release}{Not released}
+\newcommand{\docudate}{\gitAuthorDate}
+\newcommand{\classification}{Unrestricted}
+\newcommand{\docstatus}{Draft\xspace}
+% Table with signatures
+\newcommand{\signaturetable}{
+  \begin{tabularx}{\textwidth}{|X|X|X|}
+      \hline
+      Name & Designation & Affilitation\\
+      \hline
+      Montse Farreras& Lead Author& University of Cambridge \\
+      \hline
+      Signature \& Date: & & \\
+      & & \\
+      & & \\
+      \hline
+      Name & Designation & Affilitation\\
+      \hline
+      & & \\
+      \hline
+      Signature \& Date: & & \\
+      & & \\
+      & & \\
+      \hline
+  \end{tabularx}
+}
+
+  % Table with version numbers
+  \newcommand{\versiontable}{
+  \begin{tabularx}{\textwidth}{|X|X|X|X|}
+        \hline
+        \bf{Version} & {\bf Date of issue} & {\bf Prepared by} & {\bf Comments}\\
+        \hline
+        0.0 & & & \\
+        \hline
+      \end{tabularx}
+  }
+
+
+\newcommand{\organisationtable}{
+\begin{center}
+ \sffamily{\bf ORGANISATION DETAILS}\end{center}
+    \begin{table}[htbp]
+      \centering
+      \begin{tabular}[htbp]{|l|l|}
+        \hline
+        Name & Science Data Processor Consortium\\
+        \hline
+      \end{tabular}
+    \end{table}
+}
+
+\newcommand{\Nfcorr}{\ensuremath{N_{\rm f,corr}}}
+
+
+\title{}
+
+\begin{document}
+\sdpfrontpage
+
+\section{Introduction}
+
+The current architecture of the SKA SDP element~\cite{SDParch} envisages a 
+data-driven model for the advandages considered in~\cite{DDchoice}
+
+The focus of this paper is to outline the SDP Data-driven requirements
+and evaluate available data-driven systems in accordance to the these 
+requirements.
+
+The following systems are considered for this study:
+\begin{enumerate}
+\item Swift-T 
+\item Regent/Legion\footnote{http://gasnet.lbl.gov}
+\item Parsec/Drague
+\item COMPSS
+\item The Message Passing 
+Interface(MPI)\footnote{http://www.mpi-forum.org} will also be studied,
+(despite it is not a data-flow model) and used as a baseline in some cases.
+\end{enumerate}
+
+
+We evaluate our tests in one of the following platforms:
+\begin{enumerate}
+\item Darwin and Wilkes\footnote{ http://www.hpc.cam.ac.uk}
+\item MareNostrum\footnote{https://www.bsc.es/marenostrum-support-services}
+\end{enumerate}
+
+\section{SDP data-driven architecture requirements}
+
+\section{Candidate systems overview and evaluation}
+\include{legion.tex}
+
+
+
+\section{Conclusions}
+
+
+
+\addcontentsline{toc}{section}{References}
+%\bibliographystyle{egu}
+\bibliography{ska}
+
+\end{document}
+
+
