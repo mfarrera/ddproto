@@ -13,11 +13,11 @@
 
 
 % Configuration info
-\newcommand{\bigdoctitle}{Is a data-driven programming model a viable solution for SDP?: a survey on available data-driven systems}
+\newcommand{\bigdoctitle}{Is any existing data-driven programming model a viable solution for SDP?: a survey on available data-driven systems}
 \newcommand{\docnr}{}
 \newcommand{\context}{}
 \newcommand{\revision}{git-\gitAbbrevHash}
-\newcommand{\docauthor}{Montse Farreras}
+\newcommand{\docauthor}{Montse Farreras, Daniele Lezi, Gladys Utrera, Jordi Fornes}
 \newcommand{\leadauthor}{Montse Farreras}
 \newcommand{\release}{Not released}
 \newcommand{\docudate}{\gitAuthorDate}
@@ -82,7 +82,7 @@
 \section{Introduction}
 
 The current architecture of the SKA SDP element~\cite{SDParch} envisages a 
-data-driven model for the advandages considered in~\cite{DDchoice}
+data-driven model for the advandadges considered in~\cite{DDchoice}
 
 The focus of this paper is to outline the SDP Data-driven requirements
 and evaluate available data-driven systems in accordance to the these 
@@ -94,6 +94,7 @@ The following systems are considered for this study:
 \item Regent/Legion\footnote{http://gasnet.lbl.gov}
 \item Parsec/Drague
 \item COMPSS
+\item Spark
 \item The Message Passing 
 Interface(MPI)\footnote{http://www.mpi-forum.org} will also be studied,
 (despite it is not a data-flow model) and used as a baseline in some cases.
@@ -106,11 +107,97 @@ We evaluate our tests in one of the following platforms:
 \item MareNostrum\footnote{https://www.bsc.es/marenostrum-support-services}
 \end{enumerate}
 
-\section{SDP data-driven architecture requirements}
+\section{SDP data-driven architecture requirements and background information}
+% split in two and organize better
 
-\section{Candidate systems overview and evaluation}
+
+% About the HW
+The execution model runtime lyes in between the hardware architecture and the astronomical software.
+About the hardware architecture we know/have assumed the following:
+
+\begin{itemize}
+\item Number of nodes to $N=12600$  [Old Cost Basis of Estimate]
+\item HDD storage: 19PB shared between nodes
+\item RAM storage: 806TB (64BG/node)
+%\item The number of frequencies to $\Nfcorr=65000$ [SKA Baseline design v2]
+\item Peak FLOPS capability of each node of 17.8 TeraFLOPS [Basis of Estimate]
+\item Achieved FLOPS 25\% efficiency [Basis of Estimate]
+\end{itemize}
+
+%About the pipelines
+Regarding the SDP software, it has been defined as a set of pipelines, which are descrived in detail in here~\cite{SDPpipelines}.
+In the following paragraphs I try to summarise the relevant aspects of this software from the execution engine point of view.
+The amount of data to be processed depends on the specific pipeline and the telescope. 
+SDP software will serve two telescopes SKA-Mid and SKA-Low (explain a bit more the purpose of this two !!). 
+
+The data we are processing we will call visibility data. Visibility data consists of 
+
+Data will be received from the telescope and placed in a buffer by a process called Ingress (or receive). The data is received in UDP using multiple 
+40 GbE links. The incoming data rates depend on the telescope correlator's dump time (i.e. 0.14 s for SKA1-Low and 0.9 s for SKA1-Mid~\cite{ParametricModel}, we can assume a rate of 0.5Terabytes/s. After that, we can distinguish two different types of pipelines, which can be 
+sumarized as follows:
+\begin{itemize}
+\item Fast imaging: Fast imaging pipeline needs to process the data in pseudo-real time as it is being received from the telescope.
+ This means that every second we will have 0.5Terabytes of visibility data to process. The processing for this data is a map
+\item Continumm imaging: Continum imaging pipeline reads data from the previous observation that has been stored in a buffer.
+A double buffering technique is used, one buffer is being filled while the other is being processed. The size of the buffer is around 50PetaBytes
+to hold two observations plus intermediate data products. It consists of an iterative process with two nested loops with all processing units needing
+to synchronize at every iteration of the outer loop (with aproximately 10 iterations). The inner loop needs to converge (cleaning).
+\item Calibration: Calibration pipeline runs alongside with continum pipeline, processing the same buffered data in a different way
+\end{itemize}
+
+% add more here about the computational demands and communication demands
+
+On the other hand, we have analysed the pipelines in terms of data moment and computational requirements, using 
+the parametric model (~\cite{SDPparametricmodel} more information
+can be found in \\ MISSING CITATION from Peter's work on the parametric model
+and we learned the following: 
+
+%Challenges:
+Therefore the SDP needs to achieve high-performance on key scientific algorithms in multi-PFLOPS regime so that HPC technologies are critical.
+At the same time it needs to collect, manage, store and deliver vast amounts of data into viable products like Big Data processing so we care about variety, velocity, volume, veracity and Value of data. It needs to Combine real-time and iterative execution environment and provide feedback at various cadence to other elements of the telescope(High Performance Data Analytics)
+The software needs to Operate 365 days a year High availability and accommodate failure via software. Modern hyperscale environments
+It needs to be Extensible, Scalable to Provide a modern eco-system to accommodate new algorithm development and upgrades
+Extensibility, scalability, maintainabilitySKA1 is the first ?milestone? ? expecting significant expansion in the 2020s. The lifetime of an observatory is around 50 years. 
+
+% About the SDP software architecture
+The SDP software architecture presented in~\cite{SDParch} has adopted a data-driven architecture. The key aspects of this architecture 
+are: (i) the SDP processing is to be divided into a set of pure tasks, where each task will specify its input and output data. 
+Tasks will be pure in the sense that no other data than the specified parameters will be used within a task. (ii) The SDP processing 
+will be run in parallel taking into account the data dependencies between tasks. (iii) the assignment of tasks to computational resources will be done
+at run-time. 
+
+The data-driven architecture has been chosen because: (i) it potentially allows several avenues for implementing fault tolerance explicitly, for example: restarting processing based on data dependencies; data policies with regard to the loss of input or intermediate data; reallocation of work across the hardware. (ii) it does provide architectural separation between domain specific functionality, enclosing
+it within the tasks, from the execution engine component which will exploit parallelism and will care about the performance,
+efficiency and scalability of the parallel system. It is assumed that the tasks will be implemented for serial/multithreaded performance for a 
+particular comuptational unit (gpu, cpu ...) (iii) a data-driven Execution Engine has the potential to provide scalability/performance without strong coupling
+to the hardware architecture.
+
+Decoupling EE from the architecture provides extensibility (possible performance portability) of the SDP software which will be required to accomodate upgrades. Enclosing the domain specific knowledge within the tasks will greatly improve maintainability, productivity and extensibility if a new algorithm development is required. To achieve scalability the EE itself needs to be scalable (i.e avoid bottlenecks at master node ...)
+
+\section{Execution Engine Requirements}
+
+
+
+
+
+
+
+
+
+The amount of data to be processed depends on the specific pipeline but from the execution engine point of view we can 
+assume there is two different types of pipelines with very different needs, which can be summarized as follows:
+\begin{itemize}
+\item Fast imaging: Fast imaging pipeline reads data 
+\item Continumm imaging
+
+
+
+\section{Candidate systems overview}
 \include{legion.tex}
 
+%\section{Benchmarks}
+
+%\section{Candidate systems evaluation}
 
 
 \section{Conclusions}
