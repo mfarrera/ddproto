@@ -30,3 +30,5 @@ In Legion each task specifies for each region it accesses the privileges and coh
 \item Maintainability/ Extensibility: tasks and runtime should be separated by a well defined interface so that functionality can be extended with very little knowledge. This is possible for Regent, plus it provides the mapper interface to add specific details about the scheduling, but it should only need to be written once and I do not know at this point if this is possible.
 \item Performance Portability/ Extensibility: the runtime should be portable to different platforms and specifically should be able to run in a upgraded hardware (i.e with added memory per node, better network, more nodes ...) and take advantadge of the new available resources with minimal changes to the code. This should be ok too.
 \end{itemize}
+
+NOTE: Most of the information compiled in this section comes from the memo~\cite{RegentEval}, where more detailed analysis, justification as well as information on how to run the tests can be found.
