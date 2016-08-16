@@ -13,11 +13,13 @@
 
 
 % Configuration info
-\newcommand{\bigdoctitle}{Is any existing data-driven programming model a viable solution for SDP?: a survey on available data-driven systems}
+\newcommand{\bigdoctitle}{Summary of SDP information relevant to study potential available data-driven systems}
+%\newcommand{\bigdoctitle}{Is any existing data-driven programming model a viable solution for SDP?: a survey on available data-driven systems}
 \newcommand{\docnr}{}
 \newcommand{\context}{}
 \newcommand{\revision}{git-\gitAbbrevHash}
-\newcommand{\docauthor}{Montse Farreras, Daniele Lezi, Gladys Utrera, Jordi Fornes}
+%\newcommand{\docauthor}{Montse Farreras, Daniele Lezi, Gladys Utrera, Jordi Fornes}
+\newcommand{\docauthor}{Montse Farreras}
 \newcommand{\leadauthor}{Montse Farreras}
 \newcommand{\release}{Not released}
 \newcommand{\docudate}{\gitAuthorDate}
@@ -79,170 +81,10 @@
 \begin{document}
 \sdpfrontpage
 
-\section{Introduction}
 
-The current architecture of the SKA SDP element~\cite{SDParch} envisages a 
-data-driven model for the advantadges considered in~\cite{DDchoice}
-
-The focus of this paper is to outline the SDP Execution Engine requirements
-and survey available systems in accordance to the these 
-requirements.
-
-\subsection{The SDP challenge}
-%Challenges:
-The SDP software faces a number of challenges: it needs to achieve high-performance on key scientific algorithms in multi-PFLOPS regime so HPC technologies are critical. At the same time it needs to collect, manage, store and deliver vast amounts of data into viable products like Big Data processing\footnote{Gartner's definition of the 3Vs is still widely used, and in agreement with a consensual definition that states that "Big Data represents the Information assets characterized by such a High Volume, Velocity and Variety to require specific Technology and Analytical Methods for its transformation into Value"}. SDP raw data has: Volume, Variety, Velocity (we get it in real-time), Veracity (The quality of captured data can vary greatly, affecting accurate analysis) and we seek Value of data (deliver products that can be analysed and worked on). 
-SDP needs to Combine real-time and iterative execution environment and provide feedback at various cadence to other elements of the telescope (High Performance Data Analytics). The software needs to Operate 365 days a year, it needs to provide high availability and therefore to accommodate failure via software. (Modern hyperscale environments).
-It needs to be extensible, scalable and maintainable to provide a modern eco-system to accommodate new algorithm development and hardware upgrades.
-SKA1 is the first milestone and significant expansion is expected in the 2020s. The lifetime of an observatory is around 50 years. 
-
-\subsection{The SDP Software architecture}
-% About the SDP software architecture
-The SDP software architecture presented in~\cite{SDParch} has adopted a data-driven architecture. The key aspects of this architecture 
-are: (i) the SDP processing is to be divided into a set of pure tasks, where each task will specify its input and output data. 
-Tasks will be pure in the sense that no other data than the specified parameters will be used within a task. (ii) The SDP processing 
-will be run in parallel taking into account the data dependencies between tasks. (iii) the assignment of tasks to computational resources will be done
-at run-time. 
-
-The data-driven architecture has been chosen because: (i) it potentially allows several avenues for implementing fault tolerance explicitly, for example: restarting processing based on data dependencies; data policies with regard to the loss of input or intermediate data; reallocation of work across the hardware. (ii) it does provide architectural separation between domain specific functionality, enclosing
-it within the tasks, from the execution engine component which will exploit parallelism and will care about the performance,
-efficiency and scalability of the parallel system. It is assumed that the tasks will be implemented for serial/multithreaded performance for a 
-particular comuptational unit (gpu, cpu ...) (iii) a data-driven Execution Engine has the potential to provide scalability/performance without strong coupling
-to the hardware architecture.
-
-Decoupling EE from the architecture provides extensibility (possible performance portability) of the SDP software which will be required to accommodate upgrades. Enclosing the domain specific knowledge within the tasks will greatly improve maintainability, productivity and extensibility if a new algorithm development is required. To achieve scalability the EE itself needs to be scalable (i.e avoid bottlenecks at master node ...)
-
-\subsubsection{Functional Architecture}
-Figure 4 in the SDP Architecture document~\cite{SDParch} shows the Functional Architecture. It shows where the execution engine stands and it provides a complete picture of the functions that the SDP can perform. However, not all of this functionality will be associated with, or required for, a given scheduled observation. Therefore, for every observation (i.e. every 6 hours) a \emph{driven program} needs to be generated
-%taking into account the chosen capabilities\footnote{A SDP Processing Capability is the term chosen to represent the functionalities contained in the "driven program". It consists of connected pipelines (e.g. Receive, Imaging and Preserve) and
-%supporting functions. See also the definition in the SDP Architecture document. Capabilities represent concrete instances of pipeline descriptions.}
-. For this reason, we divide the Execution Engine for the SDP in two components:
-\begin{enumerate}
-\item The Generation of the driven program: This component is responsible for putting together the \emph{driven program} which will interface with the Core Execution Runtime and  be triggered by the Master Controler. The choice of Task granularity relies, therefore, in this component. Despite task granularity can also be reasoned a bit from within the Core Execution Runtime, (i.e. by analysing the task dependency graph some tasks may be merged), I think task granularity should be mainly reflected on the \emph{driven program}. 
-\item The Core Execution Runtime:  The core execution runtime (runtime in short) will be responsible for performing data dependency analysis, schedule tasks when they are free of dependencies and manage data movement. Scheduling should aim at exploit data locality and load balance between computational units as well as minimize communication. These are the main functionalities of most available runtimes, however we expect this to be already a challenge due to the vast amount of data to be processed and therefore the high number of tasks that the runtime will need to manage. On top of these functionalities the runtime for SDP needs to: (i) Implement a fault tolerance mechanism which would allow to restart processing based on data dependencies; implement data policies with regard to the loss of input data or intermediate data (non-precious/precious data) and reallocate work across the hardware. 
-%(ii) Generate QA (Quality Assesment) metrics in real time and on-demand. Processing of data needs to be monitored to avoid processing a wrong (i.e. corrupted) observation so QA metrics need to be generated in the form of "logging data" that will be processed by a function outside our program. This metrics will be generated by the tasks so the runtime has nothing to do other than taking into account that changing the genration of QA may impact on static load balancing.
-\end{enumerate}
-
-For the purpose of this document we focus on the Core Execution Runtime Component.
-
-
-
-%We evaluate our tests in one of the following platforms:
-%\begin{enumerate}
-%\item Darwin and Wilkes\footnote{ http://www.hpc.cam.ac.uk}
-%\item MareNostrum\footnote{https://www.bsc.es/marenostrum-support-services}
-%\end{enumerate}
-
-
-% split in two and organize better
-
-\subsection{The Hardware}
-% About the HW
-The execution model runtime lyes in between the hardware architecture and the astronomical software.
-About the hardware architecture we know/have assumed the following:
-
-\begin{itemize}
-\item Number of nodes to $N=12600$  [Old Cost Basis of Estimate]
-\item HDD storage: 19PB shared between nodes
-\item RAM storage: 806TB (64BG/node)
-%\item The number of frequencies to $\Nfcorr=65000$ [SKA Baseline design v2]
-\item Peak FLOPS capability of each node of 17.8 TeraFLOPS [Basis of Estimate]
-\item Achieved FLOPS 25\% efficiency [Basis of Estimate]
-\end{itemize}
-
-\subsection{The astronomical software}
-%About the pipelines
-Regarding the SDP astronomical software, it has been defined as a set of pipelines, which are described in detail in here~\cite{SDPpipelines}.
-In the following paragraphs I try to summarise the relevant aspects of this software from the execution engine point of view.
-The amount of data to be processed depends on the specific pipeline and the telescope. 
-
-SDP software will serve two telescopes SKA-Mid and SKA-Low. SKA-Low covers the lowest frequency band for the SKA, from 50MHz up to 350MHz. 
-It is an aperture array consisting of over a quarter of a million wide bandwidth antennas of a single design. It will be located in an observatory side 
-in Australia. SKA-Mid consists of an array of several thousand dish antennas 
-(around 200 to be built in Phase 1) to cover the frequency range 350 MHz to 14 GHz and it will be located in South Africa.
-
-The data we are processing is called visibility data. Visibility data consists of four numbers for each frequency channel (splits on the covered frequency range)
- for each antenna pair at each correlator dump time. 
-They correspond to the four polarizations and measure the amplitude of the signal at a certain frequency coming from a pair of antennas after
-being correlated by the correlator. For instance for SKA-Low we currently have the following setup:
-\begin{itemize}
-\item 512 antennas (131072 baselines, antenna pairs), 
-\item correlator dump time is 0.9s and 
-\item the number of frequency channels is 65K
-\end{itemize}
-
-this makes a total of \textbf{432GB/s}, for a 6hour observation it gives around \textbf{10PBytes} of visibility data to process.
-
-Besides the visibility data, which is received as a continuous flow to be processed and imaged, there is the non-imagingdata (Transient buffer, Pulsar and Transient Search Candidates and Pulsar Timing Data) received asdiscrete chunks. The size of this data is relatively small.
-
-Data will be received from the telescope and placed in a buffer by a process called Ingress (or receive). The data is received in UDP using multiple 
-40 GbE links. The incoming data rates depend on the telescope correlator's dump time (i.e. 0.14 s for SKA1-Low and 0.9 s for SKA1-Mid~\cite{ParametricModel}, 
-we can assume a rate of 0.5Terabytes/s. After that, we can distinguish two different types of pipelines, which can be 
-sumarized as follows:
-\begin{itemize}
-\item Fast imaging: Fast imaging pipeline needs to process the data in pseudo-real time as it is being received from the telescope.
- This means that every second we will have \textbf{0.5Terabytes} of visibility data to process. The processing for this data is a map
-\item Continumm imaging: Continum imaging pipeline reads data from the previous observation that has been stored in a buffer.
-A double buffering technique is used, one buffer is being filled while the other is being processed. The size of the buffer is around \textbf{20PetaBytes}
-if it keeps 2 observations\footnote{A few observations will actually be stored and processed as a pipeline which will increase the demands of the storage system,
-but this does not affect the execution engine, which will operate two buffers at any give time?.
-This observations will be stored in a cold buffer (of 60PBytes?)}.
-to hold two observations plus intermediate data products. It consists of an iterative process with two nested loops with all processing units needing
-to synchronize at every iteration of the outer loop (with aproximately 10 iterations). The inner loop needs to converge (cleaning).
-\item Calibration: Calibration pipeline runs alongside with continum pipeline, processing the same buffered data in a different way
-\end{itemize}
-
-
-% add more here about the computational demands and communication demands
-
-On the other hand, we have analysed the pipelines in terms of data moment and computational requirements, using 
-the parametric model (~\cite{ParametricModel} more information
-can be found in \\ MISSING CITATION from Peter's work on the parametric model
-and we learned the following:  \\ TODO
-
-
-
-
-
-\section{Execution Engine Requirements}
-\subsection{The data flow environment}
-
-The structure of data: Introduce terminology and assumptions about how the program should work, a binary will be generated ...
-
-\subsection{Requirements}
-
-After analysing the SDP challenge we have defined the following list of requirements/challenges that will guide our comparison of existing execution engines:
-\begin{itemize}
-\item Data Layout. The programming model should provide a way to layout data that supports partitions for handling irregularly sampled collections.
-Our visibility data requires more computation for higher frequency band so we would like to distribute data in a way that where high frequency band
-visibilities are together the data chunk is smaller and for low frequencies the chunks are bigger to distribute computation evenly across the machine.
-\item Memory management: Another challenge related to data occurs when the amount of data needed by a task exceeds the physical available memory. 
-The programming model should provide a way to handle this situation (i.e. using files or mapping memory on demand ...) as transparent to the programmer as possible. Also related with memory management there will be the situation when the memory requirements of two tasks exceeds the amount of available physical memory, in that case runtime should take the memory demands into account during task scheduling so that tasks do not run together and prevent swapping.  
-\item Scalability: we seek to achieve scalability up to 8K nodes.
-\item Interoperability: Tasks may be written in  MPI, CUDA, Python?, OpenMP, OpenACC and Interface with convenient foreign functions  (i.e fft library)
-\item I/O: a way to get data into the system (visibility data comes from the TM, streaming, and then from buffer, other data i.e. sky model, telescope state is in the storage service (file?)
-\item performance: the overhead added by the runtime should be acceptable, performance comparable to an MPI program (ASKAPSoft). There is a timeout: the program should run before the next observation is available (6 hours). Factors that affect the overhead of a runtime are: communication overhead (we can measure latency and bandwidth between two nodes and bi-sectional bandwidth using the full 8k nodes), runtime overhead (when communication is not an issue, we would like to measure performance of an embarassingly parallel program which should be comparable to SPMD program (i.e. MPI). Data transposition: A two-dimensional region will be used row-wise by a certain number of tasks but it will need to be used colum-wise by a different tasks, so, effectively it will require a transposition of the data, we would like to measure how the runtime can handle this (without explicitely using collective operations) 
-\item resilience: the runtime must be stable enough to handle hardware failures, and take into account hints from the "driven program" which will tell the system the liveness of its k-inputs and output data (preciousness) and upon a failure of up to $m$ of the $k$ inputs compute a partial answer without an error condition.
-\item Maintainability/ Extensibility: tasks and runtime should be separated by a well defined interface so that functionality can be extended with very little knowledge 
-\item Performance Portability/ Extensibility: the runtime should be portable to different platforms and specifically should be able to run in a upgraded hardware (i.e with added memory per node, better network, more nodes ...) and take advantadge of the new available resources with minimal changes to the code.
-\end{itemize}
-
-\subsection{micro-benchmarks}
-
-\subsection{Candidate systems}
-The following systems are considered for this study:
-\begin{enumerate}
-\item Swift-T 
-\item Regent\footnote{http://regent-lang.org/}/Legion\footnote{http://legion.stanford.edu/}
-\item Parsec/Drague
-\item COMPSS/OMPSS
-\item Spark
-\item StarPU
-\item The Message Passing Interface(MPI)\footnote{http://www.mpi-forum.org} will also be studied,
-(despite it is not a data-flow model) and used as a baseline in some cases.
-\end{enumerate}
-
-
-\include{legion}
+\include{intro}
+%\include{requirements}
+%\include{legion}
 
 %\section{Benchmarks}
 

@@ -1,0 +1,43 @@
+\section{Execution Engine Requirements}
+
+NOTE: This document is a work in progress and this section should be taken as my opinion on what we could use as a criteria to compare runtimes.
+This list has not been agreed and it needs more work.
+
+\subsection{The data flow environment}
+
+The structure of data: Introduce terminology and assumptions about how the program should work, a binary will be generated ...
+
+\subsection{Requirements}
+
+After analysing the SDP challenge we have defined the following list of requirements/challenges that will guide our comparison of existing execution engines:
+\begin{itemize}
+\item Data Layout. The programming model should provide a way to layout data that supports partitions for handling irregularly sampled collections.
+Our visibility data requires more computation for higher frequency band so we would like to distribute data in a way that where high frequency band
+visibilities are together the data chunk is smaller and for low frequencies the chunks are bigger to distribute computation evenly across the machine.
+\item Memory management: Another challenge related to data occurs when the amount of data needed by a task exceeds the physical available memory. 
+The programming model should provide a way to handle this situation (i.e. using files or mapping memory on demand ...) as transparent to the programmer as possible. Also related with memory management there will be the situation when the memory requirements of two tasks exceeds the amount of available physical memory, in that case runtime should take the memory demands into account during task scheduling so that tasks do not run together and prevent swapping.  
+\item Scalability: we seek to achieve scalability up to 8K nodes.
+\item Interoperability: Tasks may be written in  MPI, CUDA, Python?, OpenMP, OpenACC and Interface with convenient foreign functions  (i.e fft library)
+\item I/O: a way to get data into the system (visibility data comes from the TM, streaming, and then from buffer, other data i.e. sky model, telescope state is in the storage service (file?)
+\item performance: the overhead added by the runtime should be acceptable, performance comparable to an MPI program (ASKAPSoft). There is a timeout: the program should run before the next observation is available (6 hours). Factors that affect the overhead of a runtime are: communication overhead (we can measure latency and bandwidth between two nodes and bi-sectional bandwidth using the full 8k nodes), runtime overhead (when communication is not an issue, we would like to measure performance of an embarassingly parallel program which should be comparable to SPMD program (i.e. MPI). Data transposition: A two-dimensional region will be used row-wise by a certain number of tasks but it will need to be used colum-wise by a different tasks, so, effectively it will require a transposition of the data, we would like to measure how the runtime can handle this (without explicitely using collective operations) 
+\item resilience: the runtime must be stable enough to handle hardware failures, and take into account hints from the "driven program" which will tell the system the liveness of its k-inputs and output data (preciousness) and upon a failure of up to $m$ of the $k$ inputs compute a partial answer without an error condition.
+\item Maintainability/ Extensibility: tasks and runtime should be separated by a well defined interface so that functionality can be extended with very little knowledge 
+\item Performance Portability/ Extensibility: the runtime should be portable to different platforms and specifically should be able to run in a upgraded hardware (i.e with added memory per node, better network, more nodes ...) and take advantadge of the new available resources with minimal changes to the code.
+\end{itemize}
+
+\subsection{micro-benchmarks}
+
+\subsection{Candidate systems}
+The following systems are considered for this study:
+\begin{enumerate}
+\item Swift-T 
+\item Regent\footnote{http://regent-lang.org/}/Legion\footnote{http://legion.stanford.edu/}
+\item Parsec/Drague
+\item COMPSS/OMPSS
+\item Spark
+\item StarPU
+\item The Message Passing Interface(MPI)\footnote{http://www.mpi-forum.org} will also be studied,
+(despite it is not a data-flow model) and used as a baseline in some cases.
+\end{enumerate}
+
+
