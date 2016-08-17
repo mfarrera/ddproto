@@ -4,7 +4,8 @@
 
 StarPU is developed at LaBRI, Inria Bordeaux Univercity. 
 StarPU is a task-programming library for hybrid architectures. It features a runtime system for executing application on heterogeneous machines, i.e. with GPUs, CPUs. 
-The abstraction for a task is the \emph{codelet}. The programmer specifies the direction of the codelets parameters so that the runtime discovers and enforces the dependencies between them.
+The abstraction for a task is the \emph{codelet}. The codelet is a set of implementations of the same computational kernel for different computation units (i.e. CPU, GPU). 
+The programmer specifies the direction of the codelets parameters so that the runtime discovers and enforces the dependencies between them.
 Codelets are then executed asunchronously on a core of the machine or offloaded to an accelerator. The StarPU runtime targets shared memory heterogeneous platforms, and a set of futures are provided:
 The StarPU runtime does not work directly on distributed memory machines, instead they
 propose an hybrid model that integrates with MPI through explicit network communications, which will then be automatically combined and overlapped with the intra-node data transfers and computation.
@@ -25,7 +26,8 @@ TODO: learn more about this, does this mean that the data-depencency analysis is
 If the disk backend provides an alloc method, StarPU can then start using it to allocate room and store data there with the write method, without user intervention. 
 This also means that Access to storage (e.g., in our case the buffered visibilities, intermediate data products, final data products) can be intermediated by StarPU.
 \item Scalability: They have proven scaling on a 144-node cluster with GPUs (of the hybrid version with MPI)
-\item Interoperability: They have compilers that transpate from OpenAcc and OpenMP to StarPU code. They interoperate with MPI to provide an hybrid model that can run on clusters. Not sure about the tasks (they can run on GPU, but how are they written?) 
+\item Interoperability: They have compilers that transpate from OpenAcc and OpenMP to StarPU code. They interoperate with MPI to provide an hybrid model that can run on clusters. 
+The codelets (task-abstraction) are a set of implementations of the same kernel for different architectures (i.e. GPU,CPU) and even parallel (OpenMP). TODO:find out more!
 \item I/O: The storage service can be abstracted by the out-of-core support mentioned above. Not suer about the streaming.
 \item performance: Performance is TODO { the overhead added by the runtime should be acceptable, performance comparable to an MPI program (ASKAPSoft). There is a timeout: the program should run before the next observation is available (6 hours). Factors that affect the overhead of a runtime are: communication overhead (we can measure latency and bandwidth between two nodes and bi-sectional bandwidth using the full 8k nodes), runtime overhead (when communication is not an issue, we would like to measure performance of an embarassingly parallel program which should be comparable to SPMD program (i.e. MPI). Data transposition: A two-dimensional region will be used row-wise by a certain number of tasks but it will need to be used colum-wise by a different tasks, so, effectively it will require a transposition of the data, we would like to measure how the runtime can handle this (without explicitely using collective operations)} 
 \item resilience: Resilience is not mentioned. the runtime must be stable enough to handle hardware failures, and take into account hints from the "driven program" which will tell the system the liveness of its k-inputs and output data (preciousness) and upon a failure of up to $m$ of the $k$ inputs compute a partial answer without an error condition.
