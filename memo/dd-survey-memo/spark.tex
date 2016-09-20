@@ -2,6 +2,18 @@
 
 \subsection{Overview}
 
+Spark is a framework targeting large-scale data-intensive applications on commodity clusters. It follows a model of cluster computing in which data-parallel computations are 
+executed on clusters of unreliable machines by systems that automatically provide locality-aware scheduling, fault tolerance and load balancing. 
+While most of these systems provide a programming model where the user create acyclic data flow graphs to pass input data through a set of operators,
+Spark targets applications that cannot be expressed eficiently as acyclic data flows, specifically those that reuse 
+a working set of data across multiple parallel operations (i.e. iterative jobs and Interative analytics). For iterative applications, while in some cases each iteration can be 
+expressed as a MapReduce/Dryad job (loop unrolling) each job must reload the data from disk, incurring a significant performance penalty.
+
+The main abstraction in Spark is that of a \emph{resilient distributed dataset} (RDD). RDDs are fault-tolerant, parallel data structures that let users explicitely
+persist intermediate results in memory, control their partitioning to optimize data placement, and manipulate them using a rich set of operators.
+
+
+
 \subsection{Requirements overview}
 
 Taking into account the list of requirements that have been identified for the SDP runtime we learned the following: 

@@ -124,17 +124,32 @@ a split by time is necessary (in snapshots).
 
 On the other hand, we have analysed the pipelines in terms of data moment and computational requirements, using 
 the parametric model (~\cite{ParametricModel}. In order to do so, it is required to make some assumptions specifically regarding
-task granunarity. The following has been assumed to study the continuum imaging pipeline:
+task granunarity. The tasks has been organized as follows for the study of the continuum imaging pipeline:
 \begin{itemize}
 \item Regarding data: Data is initially split by frequency in 40 chunks (equally sized) and by time in chunks of size corresponding to the snapshot time
 that comes from the Parametric Model (optimized to reduce flop count, it is 105.6s) giving 204 chunks. Each task works on data comming from all baselines.
 \item At the gridding step we can also do faceting, which means that we will partition the generated image, by doing so we increase parallelism but more
-importantly we reduce the size of the image. In this case we work with 7 facets, which means 7x7, in the gridding step we create 7x7 u,v grid that contain
-all phase rotated visibilities, then FFT is applied to each plane generating an 49 images with less resolution, that we then put together (reproject) and it
+importantly we reduce the size of the image, reducing the memory footprint of the task. 
+In this case we work with 7 facets, which means 7x7, in the gridding step we create 7x7 u,v grid that contain
+all phase rotated visibilities, then FFT is applied to each plane generating 49 images with less resolution, that we then put together (reproject) and it
 results in the image with same resolution as if faceting had not been applied. 
+\item For the gridding and degridding tasks, data is also split by the four polarizations.
 \end{itemize}
-can be found in \\ MISSING CITATION from Peter's work on the parametric model
-and we learned the following:  \\ TODO
+This partitioning of data and computation is one of many possibilities and more work needs to be done in that direction but it gives us an idea
+of the generated task graph and its demands. Specifically it generates:
+
+the pipeline resulting from these assumptions contains about 378 million tasks and generates 1257 EB internal data for MID1 ICAL 
+
+
+To keep internal data rates in check, we merge tasks where possible:
+Reprojection Predict + IFFT
+Degrid + Degrid Kernel Update
+Phase Rotation Predict + DFT + Sum Visibilities
+Calibration Correction + Visibility Sutraction + Flagging
+Phase Rotation Backward + Gridding + Gridding Kernel Update + FFT + Reprojection
+
+More information can be found in \\ MISSING CITATION from Peter's work on the parametric model
+With this We learned the following:  \\ TODO
 
 
 

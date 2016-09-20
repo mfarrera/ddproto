@@ -25,21 +25,52 @@ The programming model should provide a way to handle this situation (i.e. using 
 \item Performance Portability/ Extensibility: the runtime should be portable to different platforms and specifically should be able to run in a upgraded hardware (i.e with added memory per node, better network, more nodes ...) and take advantadge of the new available resources with minimal changes to the code.
 \end{itemize}
 
+Input Data : ~1000 FLOPs/byte read from storage
+Need to be able to use accelerators
+Working memory in GigaBytes/task – limits usable parallelism
+Very high degree of intrinsic parallelism for most analysis stages
+Data I/O and communications in large (Megabyte + ) blocks
+Intrinsic processing stages are short(ish): ~0.01s duration and ~100 FLOPs/byte of input/output
+Minimum scalability to ~10000 nodes
+Iterative (but few) and data-dependent (but at few points) algorithms
+Some processing stages require bringing together large fraction of intermediate data products
+
 \subsection{micro-benchmarks}
 
 \subsection{Candidate systems}
-The following systems are considered for this study:
+We have identified two groups of systems that could potentially be suitable for SDP. 
+\begin{itemize}
+\item HPC task oriented programing models. These models emerged as a response to a demand for productivity in parallel programing for HPC.
+The Message Passing Interface(MPI)\footnote{http://www.mpi-forum.org} is the de-facto standard to program distributed memory systems, while good 
+performance can be achieved it requires low level tunnig and productivity and maintainability are low. For shared memory systems
+OpenMP\footnote{http://openmp.org} has been very successful offering better productivity for shared memory systems. The research community 
+has come up with a number of effors to make this systems more productive while maintainng focus on performance merging the best of both programing models. 
+PGAS languages is one of these effords (UPC, X10, Titanium, Chapel ...). Another effort goes iin the direction of task oriented programming 
+models. These models we will study in more detail: 
 \begin{enumerate}
 \item Swift-T 
 \item Regent\footnote{http://regent-lang.org/}/Legion\footnote{http://legion.stanford.edu/}
 \item Parsec/Drague
 \item COMPSS/OMPSS
+\item StarPU\footnote{http://starpu.gforge.inria.fr/}
+\end{enumerate}
+\item Big Data data driven progrmming models. These models targe large-scale data-intensive applications on commodity clusters. 
+They follow a model of cluster computing in which data-parallel computations are
+executed on clusters of unreliable machines by systems that automatically provide locality-aware scheduling, fault tolerance and load balancing. 
+Their primary goal is productivity and they have become very popular as they works well for a number of applications. 
+These systems provide a programming model where the user create acyclic data flow graphs to pass input data through a set of operators. 
+MapRecude~\cite{mapReduce} pioneered this model, which has been extended (i.e. systems like Dryad~\cite{Dryad} and Map-ReduceMerge~\cite{mapReduceMerge}) to generalize the types of data flows supported, or to target applications that cannot be expressed eficiently as acyclic data flows (i.e Spark targets iterative jobs and interactive analytics).
+The following models will be studied in more detail:
+\begin{enumerate}
 \item Apache Spark\footnote{http://spark.apache.org/}
 \item Apache Flink
-\item StarPU\footnote{http://starpu.gforge.inria.fr/}
-\item The Message Passing Interface(MPI)\footnote{http://www.mpi-forum.org} will also be studied,
-(despite it is not a data-flow model) and used as a baseline in some cases.
+\item Heron/kafka
 \end{enumerate}
+
+\end{itemize}
+
+These two worlds are intersecting, dispite they come from different backgrounds, and we would like to investigate further their features, their performance and
+productivity.
 
 
 NOTE: Temanejo- visual debugging for task-parallelism (supports openMP, OmpSs, SMPSs, StarPU and Parsec. \footnote{http://www.hlrs.de/en/solutions-services/service-portfolio/programming/hpc-development-tools/temanejo/}
