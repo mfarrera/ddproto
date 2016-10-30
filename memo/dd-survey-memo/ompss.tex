@@ -1,0 +1,25 @@
+\section{OmpSs}
+
+\subsection{Overview}
+
+OmpSs supports dynamic offload of MPI tasks. MPI has the ability to implement an MPMD model by means of the MPI\_Comm\_spawn call. This API call enables
+the dynamic spawn of new MPI processes on additional compute nodes that can run a different program, which is connected and can communicate with the original one.
+The same functionality is implemented in OmpSs, it developes an API to dynamically allocate nodes/MPI processes, which returns a MPI intercommunicator that encloses
+all the newly created MPI processes, OmpSs has been extended with a \emph{onto(comm,rank)} clause that specifies in which specific MPI process a task has to run, while
+the compiler and runtime system manage all data transfer and synchronizations required.
+
+
+\subsection{Requirements overview}
+
+Taking into account the list of requirements that have been identified for the SDP runtime we learned the following: 
+\begin{itemize}
+\item Data Layout. 
+\item Memory management: 
+\item Interoperability: 
+\item I/O: 
+\item performance: 
+\item resilience: 
+\item Maintainability/ Extensibility: 
+\item Performance Portability/ Extensibility: 
+\end{itemize}
+

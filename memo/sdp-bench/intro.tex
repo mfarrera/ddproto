@@ -1,0 +1,149 @@
+\section{Introduction}
+
+The current architecture of the SKA SDP element~\cite{SDParch} envisages a 
+data-driven model for the advantages considered in~\cite{DDchoice}
+
+The focus of this paper is to characterize the SDP problem by analysing its
+communication and computation pattern and define a set of benchmarks that
+are representative of our pipeles and capture the main challenges of our problem.
+
+These set of benchmarks will be defined as data-driven programs and they will
+allow us to quantitatively compare different models. 
+
+\subsection{The SDP challenge}
+%Challenges:
+The SDP software faces a number of challenges: it needs to achieve high-performance on key scientific algorithms in multi-PFLOPS regime so HPC technologies are critical. At the same time it needs to collect, manage, store and deliver vast amounts of data into viable products like Big Data processing\footnote{Gartner's definition of the 3Vs is still widely used, and in agreement with a consensual definition that states that "Big Data represents the Information assets characterised by such a High Volume, Velocity and Variety to require specific Technology and Analytical Methods for its transformation into Value"}. SDP raw data has: Volume, Variety, Velocity (we get it in real-time), Veracity (The quality of captured data can vary greatly, affecting accurate analysis) and we seek Value of data (deliver products that can be analysed and worked on). 
+SDP needs to Combine real-time and iterative execution environment and provide feedback at various cadence to other elements of the telescope (High Performance Data Analytics). The software needs to Operate 365 days a year, it needs to provide high availability and therefore to accommodate failure via software. (Modern hyperscale environments).
+It needs to be extensible, scalable and maintainable to provide a modern eco-system to accommodate new algorithm development and hardware upgrades.
+SKA1 is the first milestone and significant expansion is expected in the 2020s. The lifetime of an observatory is around 50 years. 
+
+\subsection{The SDP Software architecture}
+% About the SDP software architecture
+The SDP software architecture presented in~\cite{SDParch} has adopted a data-driven architecture and that is why our benchmarks focus on a
+data-driven programming model. 
+
+For the purpose of this document we divide the SDP Software architecture in three parts (TODO: Figure): (i) The Hardware; (ii) The Runtime System;
+and (iii) The Asthronomical software or Pipelies. In this paper we want to characterize the Pipelines in order to find a suitable Runtime System.
+
+%The key aspects of this architecture 
+%are: (i) the SDP processing is to be divided into a set of pure tasks, where each task will specify its input and output data. 
+%Tasks will be pure in the sense that no other data than the specified parameters will be used within a task. (ii) The SDP processing 
+%will be run in parallel taking into account the data dependencies between tasks. (iii) the assignment of tasks to computational resources will be done
+%at run-time. 
+
+%The data-driven architecture has been chosen because: (i) it potentially allows several avenues for implementing fault tolerance explicitly, for example: restarting processing based on data dependencies; data policies with regard to the loss of input or intermediate data; reallocation of work across the hardware. (ii) it does provide architectural separation between domain specific functionality, enclosing
+%it within the tasks, from the execution engine component which will exploit parallelism and will care about the performance,
+%efficiency and scalability of the parallel system. It is assumed that the tasks will be implemented for serial/multithreaded performance for a 
+%particular computational unit (gpu, cpu ...) (iii) a data-driven Execution Engine has the potential to provide scalability/performance without strong coupling
+%to the hardware architecture.
+
+%Decoupling EE from the architecture provides extensibility (possible performance portability) of the SDP software which will be required to accommodate upgrades. Enclosing the domain specific knowledge within the tasks will greatly improve maintainability, productivity and extensibility if a new algorithm development is required. To achieve scalability the EE itself needs to be scalable (i.e avoid bottlenecks at master node ...)
+
+
+%We evaluate our tests in one of the following platforms:
+%\begin{enumerate}
+%\item Darwin and Wilkes\footnote{ http://www.hpc.cam.ac.uk}
+%\item MareNostrum\footnote{https://www.bsc.es/marenostrum-support-services}
+%\end{enumerate}
+
+
+% About the HW
+%The execution model runtime lies in between the hardware architecture and the astronomical software.
+%About the hardware architecture we know/have assumed the following:
+
+%\begin{itemize}
+%\item Number of nodes to $N=12600$  [Old Cost Basis of Estimate]
+%\item HDD storage: 19PB shared between nodes
+%\item RAM storage: 806TB (64BG/node)
+%\item The number of frequencies to $\Nfcorr=65000$ [SKA Baseline design v2]
+%\item Peak FLOPS capability of each node of 17.8 TeraFLOPS [Basis of Estimate]
+%\item Achieved FLOPS 25\% efficiency [Basis of Estimate]
+%\end{itemize}
+
+\section{The astronomical software}
+%About the pipelines
+The SDP astronomical software, it has been defined as a set of pipelines, which are described in detail in here~\cite{SDPpipelines}.
+In the following paragraphs I try to summarise the relevant aspects of this software from the execution engine point of view.
+The amount of data to be processed depends on the specific pipeline and the telescope. 
+
+SDP software will serve two telescopes SKA-Mid and SKA-Low. SKA-Low covers the lowest frequency band for the SKA, from 50MHz up to 350MHz. 
+It is an aperture array consisting of over a quarter of a million wide bandwidth antennas of a single design. It will be located in an observatory side 
+in Australia. SKA-Mid consists of an array of several thousand dish antennas 
+(around 200 to be built in Phase 1) to cover the frequency range 350 MHz to 14 GHz and it will be located in South Africa.
+
+The data we are processing is called visibility data. Visibility data consists of four numbers (corresponding to the four polarizations) 
+ for each frequency channel (splits on the covered frequency range)
+ for each antenna pair at each correlator dump time. 
+They correspond to the four polarisation and measure the amplitude of the signal at a certain frequency coming from a pair of antennas after
+being correlated by the correlator. For instance for SKA-Low we currently have the following setup:
+\begin{itemize}
+\item 512 antennas (131072 baselines -or antenna pairs), 
+\item correlator dump time is 0.9s and 
+\item the number of frequency channels is 65K
+\item Number of polarizations is 4
+%\item Number of beams is 1
+\end{itemize}
+
+this makes a total of \textbf{432GB/s}, for a 6hour observation it gives around \textbf{10PBytes} of visibility data to process.
+
+Besides the visibility data, which is received as a continuous flow to be processed and imaged, there is the non-imaging
+data (Transient buffer, Pulsar and Transient Search Candidates and Pulsar Timing Data) received as discrete chunks. 
+We assume for now that the size of this data is relatively small.
+
+Data will be received from the telescope and placed in a buffer by a process called Ingress (or receive). The data is received in UDP using multiple 
+40 GbE links. The incoming data rates depend on the telescope correlator's dump time (i.e. 0.14 s for SKA1-Low and 0.9 s for SKA1-Mid~\cite{ParametricModel}, 
+we can assume a rate of 0.5Terabytes/s. After that, we can distinguish two different types of pipelines, which can be 
+summarised as follows:
+\begin{itemize}
+\item Fast imaging: Fast imaging pipeline needs to process the data in pseudo-real time as it is being received from the telescope.
+ This means that every second we will have \textbf{0.5Terabytes} of visibility data to process. The processing for this data is a map
+\item Continuum imaging: Continuum imaging pipeline reads data from the previous observation that has been stored in a buffer.
+A double buffering technique is used, one buffer is being filled while the other is being processed. The size of the buffer is around \textbf{20PetaBytes}
+if it keeps 2 observations\footnote{A few observations will actually be stored and processed as a pipeline which will increase the demands of the storage system,
+but this does not affect the execution engine, which will operate two buffers at any give time?.
+This observations will be stored in a cold buffer (of 60PBytes?)}.
+to hold two observations plus intermediate data products. It consists of an iterative process with two nested loops with all processing units needing
+to synchronise at every iteration of the outer loop (with approximately 10 iterations). The inner loop needs to converge (cleaning).
+For this processing working with chunks of frequencies and merging at the end is the most desirable, so parallelism can be obtained by spliting 
+by frequency. 
+\item Calibration: Calibration pipeline runs alongside with continuum pipeline, processing the same buffered data in a different way.
+Calibration pipeline needs to work on visibilities comming from all frequency chanels for certain amount of time (snapshot). For this pipeline 
+a split by time is necessary (in snapshots). 
+\end{itemize}
+
+
+% add more here about the computational demands and communication demands
+
+On the other hand, we have analysed the pipelines in terms of data moment and computational requirements, using 
+the parametric model (~\cite{ParametricModel}. In order to do so, it is required to make some assumptions specifically regarding
+task granunarity. The tasks has been organized as follows for the study of the continuum imaging pipeline:
+\begin{itemize}
+\item Regarding data: Data is initially split by frequency in 40 chunks (equally sized) and by time in chunks of size corresponding to the snapshot time
+that comes from the Parametric Model (optimized to reduce flop count, it is 105.6s) giving 204 chunks. Each task works on data comming from all baselines.
+\item At the gridding step we can also do faceting, which means that we will partition the generated image, by doing so we increase parallelism but more
+importantly we reduce the size of the image, reducing the memory footprint of the task. 
+In this case we work with 7 facets, which means 7x7, in the gridding step we create 7x7 u,v grid that contain
+all phase rotated visibilities, then FFT is applied to each plane generating 49 images with less resolution, that we then put together (reproject) and it
+results in the image with same resolution as if faceting had not been applied. 
+\item For the gridding and degridding tasks, data is also split by the four polarizations.
+\end{itemize}
+This partitioning of data and computation is one of many possibilities and more work needs to be done in that direction but it gives us an idea
+of the generated task graph and its demands. Specifically it generates:
+
+the pipeline resulting from these assumptions contains about 378 million tasks and generates 1257 EB internal data for MID1 ICAL 
+
+
+To keep internal data rates in check, we merge tasks where possible:
+Reprojection Predict + IFFT
+Degrid + Degrid Kernel Update
+Phase Rotation Predict + DFT + Sum Visibilities
+Calibration Correction + Visibility Sutraction + Flagging
+Phase Rotation Backward + Gridding + Gridding Kernel Update + FFT + Reprojection
+
+More information can be found in \\ MISSING CITATION from Peter's work on the parametric model
+With this We learned the following:  \\ TODO
+
+
+
+
+

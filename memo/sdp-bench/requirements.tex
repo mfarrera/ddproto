@@ -1,0 +1,93 @@
+\section{Pipeline Challenges}
+
+We have analyzed the pipelines and we have identified the following challenges that need representaion in our benchmark suite.
+
+\begin{itemize}
+\item Memory bounded. The parametric models shows that we will need to compute ~1000 FLOPs/byte read from storage which points towards a memory 
+bounded application. GPUs offer higher memory throughput than CPUs which make them appealing (TODO some numbers please!!). 
+\item Task Granularity. The working memory in GigaBytes/task limits usable parallelism, leading to tasks of fine granularity. Intrinsic processing
+stages are expected to last  ~0.01s duration and ~100 FLOPs/byte of input/output. 
+\item Data Layout. The programming model should provide a way to layout data that supports partitions for handling irregularly sampled collections.
+Our visibility data requires more computation for higher frequency band so we would like to distribute data in a way that where high frequency band
+visibilities are together the data chunk is smaller and for low frequencies the chunks are bigger to distribute computation evenly across the machine.
+\item Memory management: Another challenge related to data occurs when the amount of data needed by a task exceeds the physical available memory. 
+The programming model should provide a way to handle this situation (i.e. using files or mapping memory on demand ...) as transparent to the programmer as possible. Also related with memory management there will be the situation when the memory requirements of two tasks exceeds the amount of available physical memory, in that case runtime should take the memory demands into account during task scheduling so that tasks do not run together and prevent swapping.  
+\item Scalability: we seek to achieve scalability up to 8K nodes.
+\item Communication pattern: Both Data I/O and communication is expected to be in large (MByte +) blocks. We find reductions, data transposition/reallocation 
+in the form of AllToAll communication: A two-dimensional region will be used row-wise by a certain number of tasks but it will need to be used colum-wise by a different tasks, so, effectively it will require a transposition of the data, we would like to measure how the runtime can handle this.
+ Also, some processing stages require bringing together large fraction of intermediate results.
+\item High degree of intrinsic parallelism for most analysis stages, followed by data reduction. (MapReduce model) At the same time the algorithms are
+iterative that need to converge. The Continuum and calibration pipeline has three data-dependent nested loops. 
+%\item Interoperability: Tasks may be written in  MPI, CUDA, Python?, OpenMP, OpenACC and Interface with convenient foreign functions  (i.e fft library)
+\item I/O Streaming: visibility data comes from the TM at the speed of 0.5Terabytes/s streaming, and then from buffer, other data i.e. sky model, telescope state is in the storage service (file?)
+\item Real time processing: streaming between tasks?
+\item Other performance measurements: latency/bdth , task issue/startup time, ep problem 
+communication overhead (we can measure latency and bandwidth between two nodes and bi-sectional bandwidth using the full 8k nodes), runtime overhead (when communication is not an issue, we would like to measure performance of an embarassingly parallel program which should be comparable to SPMD program (i.e. MPI). 
+\item Data Resilience and Fault Tolerance: the runtime must be stable enough to handle hardware failures, and take into account hints from the "driven program" which will tell the system the liveness of its k-inputs and output data (preciousness) and upon a failure of up to $m$ of the $k$ inputs compute a partial answer without an error condition. What sort do we need? 
+\item Scheduling: that takes into account: resource demands (memory, nodes) estimated execution time, node failure ...
+\end{itemize}
+
+\subsection{micro-benchmarks}
+
+SDP Benchmarks
+=============
+To summarize the benchmarks should cover the following aspects:
+
+- Latency/bandtith measures
+- measure task issue/startup time?
+- memory bound 
+- MapReduce -Reductions (tree reductions)
+- Data Transposition:
+- Iterative algorithms that converge
+- Streaming
+- Data does not fit in memory
+- Irregular data distribution ??
+- Data resiliency ? what sort do we need? the results only so this will go to the storage system
+- Fault tolerance 
+- Interoperability and GPUs??
+- Scheduling takes into account: resource demands (memory, nodes) estimated execution time
+
+Benchmarks that cover one or more of the requirements:
+- EP Stream- Memory bound ep problem
+- Latency/bandwith test from DRAGUE/parsec paper
+- Correct the data transposition benchmark 
+- Jacobi solver / mandelbrot set
+- Stream benchmark between tasks - stream ep ???
+- Receive data from a socket ??
+- Data does not fit in memory benchmark
+- MapRecude benchmark from the BSC paper
+- some processing stages require bringing together large fraction of intermediate results.
+
+
+- IMB Benchmarks - look at them
+- Peter Braam s document
+- Benchmarks for data flow 
+- the dwarfs from PARSEC?
+
+
+
+\subsection{Candidate systems}
+
+This paper seeks to define the benchmarks and present them in one (mostly two programming models) To Be Defined which models and where to run.
+
+\begin{enumerate}
+\item Swift-T 
+\item Regent\footnote{http://regent-lang.org/}/Legion\footnote{http://legion.stanford.edu/}
+\item Parsec/Drague
+\item COMPSS/OMPSS
+\item StarPU\footnote{http://starpu.gforge.inria.fr/}
+\item Apache Spark\footnote{http://spark.apache.org/}
+\item Apache Flink
+\item Heron/kafka
+\end{enumerate}
+
+\end{itemize}
+
+Big Data and HPC worlds are intersecting, dispite they come from different backgrounds, and we would like to investigate further their features, their performance and
+productivity.
+
+
+NOTE: Temanejo- visual debugging for task-parallelism (supports openMP, OmpSs, SMPSs, StarPU and Parsec. \footnote{http://www.hlrs.de/en/solutions-services/service-portfolio/programming/hpc-development-tools/temanejo/}
+StarPU integrates with SImGRID, ompSS with tasksim
+
+
