@@ -16,9 +16,9 @@
 
 int main(int argc, char *argv[]) {
 	double theta = 0.08, lambda = 300000;
-	char *wkern_file = NULL, *akern_file = NULL,
+	char *wkern_file = NULL, *akern_file = NULL;
 	const char grid_file[] = "out.grid";
-        const char image_filei[] = "out.img";
+        const char image_file[] = "out.img";
 	double bl_min = DBL_MIN, bl_max = DBL_MAX;
     
 	
