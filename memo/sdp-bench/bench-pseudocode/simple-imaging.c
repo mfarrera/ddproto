@@ -14,6 +14,10 @@
 
 #include "grid.h"
 
+// To switch between reading visibilities from a file
+// or generating them based on a configuration file
+#define READ_VIS 0
+
 int main(int argc, char *argv[]) {
 	double theta = 0.08, lambda = 300000;
 	char *wkern_file = NULL, *akern_file = NULL;
@@ -29,13 +33,12 @@ int main(int argc, char *argv[]) {
 		exit(0);
 	}
 
-	//        Must have an input file
+	//       A file must be provided 
 	const char *vis_file = 0;
 	if (argc==2) {
 		vis_file = argv[1];
 	} else {
-		printf("Please supply a visibility input file after command line:\n");
-		printf("%s vis-file !\n",argv[0]);
+		fprintf(stderr,"A file must be provided either the visibility file or the configuration file to generate vis\n");
 		exit(0);
 	}
 		
@@ -43,10 +46,14 @@ int main(int argc, char *argv[]) {
     // Open files
     struct vis_data vis;
     int grid_fd = -1, image_fd = -1;
+#if (READ_VIS==1)
 	if (load_vis(vis_file, &vis, bl_min, bl_max)) {
 		perror("Failed to read visibilities");
 		return 1;
 	}
+#else
+        generate_vis(vis_file, &vis,bl_min,bl_max);
+#endif
 	grid_fd = open(grid_file, O_CREAT | O_RDWR);
 	if (grid_fd == -1) {
 		perror("Failed to open grid file");
