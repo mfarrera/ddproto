@@ -19,7 +19,8 @@
 #define READ_VIS 0
 
 int main(int argc, char *argv[]) {
-	double theta = 0.08, lambda = 300000;
+	double theta = 0.08; // Field of view in radians? (0.002 in the notebook aaf for generated vis)
+	double lambda = 300000;
 	char *wkern_file = NULL, *akern_file = NULL;
 	const char grid_file[] = "out.grid";
         const char image_file[] = "out.img";

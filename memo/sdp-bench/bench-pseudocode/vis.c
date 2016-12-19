@@ -35,6 +35,19 @@ struct configuration
 	Table 
 };
 
+
+
+float* arange(float start, float stop, float step){
+	int len = (stop -start)/step;
+	float *range = malloc(len);
+	val=start;
+	for(i=0;i<len;i++){
+		assert(val<=stop);
+		range[i]=val;
+		val=val+step;
+	}
+	return range;
+}
 int generate_vis(char *vis_file, struct vis_data *vis,
              double min_len, double max_len){
 
