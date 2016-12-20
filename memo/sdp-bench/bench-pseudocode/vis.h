@@ -24,6 +24,43 @@ struct vis_data
 };
 */
 
+
+#define LEN(x)  (sizeof(x) / sizeof((x)[0]))
+
+struct antenna_entry
+{
+	char antenna_name[20];
+	// antena position
+	float x;
+	float y;
+	float z; 
+	float location;
+};
+
+struct antenna_configuration
+{
+	antenna_entry *antenna;
+	int num_antennas;	
+};
+
+struct ant_uvw
+{
+	float u;
+	float v;
+	float w; 
+};
+
+struct antennas_uvw
+{
+	ant_uvw *uvw;
+	int num_antennas;
+};
+
+struct uvw_baseline
+{
+	float u,v,w;
+};
+
 const float antenna_positions_VLA_a_hor[]={-401.2842,-270.6395,1.3345,
 -1317.9926,-889.0279,2.0336,
 -2642.9943,-1782.7459,7.8328,
