@@ -3,6 +3,7 @@
 #define VIS_H
 
 #include <complex.h>
+#include "grid.h"
 
 // Visibility data
 /*struct bl_data
@@ -29,39 +30,36 @@ struct vis_data
 
 struct antenna_entry
 {
-	char antenna_name[20];
+	int antenna_id;
 	// antena position
-	float x;
-	float y;
-	float z; 
+	double x,y,z;
+	double u,v,w;
 	float location;
 };
 
 struct antenna_configuration
 {
-	antenna_entry *antenna;
+	struct antenna_entry *antenna;
 	int num_antennas;	
 };
 
-struct ant_uvw
+
+struct uvw_bl
 {
-	float u;
-	float v;
-	float w; 
+	int antenna1,antenna2;
+	double u,v,w;
 };
 
-struct antennas_uvw
+struct baselines_uvw
 {
-	ant_uvw *uvw;
-	int num_antennas;
+	int num_baselines;
+	struct uvw_bl *bl;
 };
 
-struct uvw_baseline
-{
-	float u,v,w;
-};
 
-const float antenna_positions_VLA_a_hor[]={-401.2842,-270.6395,1.3345,
+
+
+const double antenna_positions_VLA_a_hor[]={-401.2842,-270.6395,1.3345,
 -1317.9926,-889.0279,2.0336,
 -2642.9943,-1782.7459,7.8328,
 -4329.9414,-2920.6298,4.217,
@@ -87,17 +85,11 @@ const float antenna_positions_VLA_a_hor[]={-401.2842,-270.6395,1.3345,
 -823.5569,9407.5172,0.0647,
 -1072.9272,12255.8935,-4.2741,
 -1349.2489,15411.7447,-7.7693,
--1651.4637,18863.4683,-9.2248}
+-1651.4637,18863.4683,-9.2248};
 
 
 
 // Prototypes
 
-int xyz_to_baselines(float xyz[], float ha_range[], dec,  vis_data* vis
-
-
-int simulate_point( ...)
-
-int generate_vis(char *vis_file, struct vis_data *vis,
-             double min_len, double max_len);
+int generate_vis(char *vis_file, struct vis_data *vis, double min_len, double max_len);
 #endif // VIS_H

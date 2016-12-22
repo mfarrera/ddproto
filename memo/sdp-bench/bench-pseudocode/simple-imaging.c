@@ -32,7 +32,9 @@ int main(int argc, char *argv[]) {
         {0, 0, 0, 0}
       };
     int option_index = 0;
-    double theta = 0, lambda = 0;
+    //double theta = 0, lambda = 0;
+	double theta = 0.002; //0.08; // Width of the Field of view as directional cosines (aproximately radians)  (0.002 in the notebook aaf for generated vis)
+	double lambda = 15000; // 300000;  //  Width of the uv-plane (in wavelengths). Controls resolution of the images. (15000 in the notebook aaf)
     char *wkern_file = NULL, *akern_file = NULL,
          *grid_file = NULL, *image_file = NULL;
     double bl_min = DBL_MIN, bl_max = DBL_MAX;
@@ -105,7 +107,7 @@ int main(int argc, char *argv[]) {
     }
 #else
 	// Generate visibilities
-	if(generate_vis(vis_file, vis, bl_min, bl_max)){
+	if(generate_vis(NULL, &vis, bl_min, bl_max)){
 		printf("Error generating visibilities\n");
 		exit(0);
 	}	

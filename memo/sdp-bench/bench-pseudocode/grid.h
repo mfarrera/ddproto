@@ -1,7 +1,7 @@
 
 #ifndef GRID_H
 #define GRID_H
-
+#include <stdint.h>
 #include <complex.h>
 
 // Visibility data
