@@ -135,7 +135,7 @@ void baselines(struct antenna_configuration *ants_uvw,struct baselines_uvw *dist
     
 
     int i=0, j=0, k=0;
-    int num_bl = ants_uvw->num_antennas * (ants_uvw->num_antennas-1);
+    int num_bl = ants_uvw->num_antennas * (ants_uvw->num_antennas-1)/2;
     dist_uvw->num_baselines = num_bl;
     dist_uvw->bl= malloc(num_bl*sizeof(struct uvw_bl));   
     for (i=0; i< ants_uvw->num_antennas; i++){
@@ -158,7 +158,7 @@ void xyz_to_baseline(struct antenna_configuration *antennas, double *ha_range, d
 	double hax=0.0;
 	struct baselines_uvw dist_uvw;
 	vis->antenna_count=antennas->num_antennas;
-	vis->bl_count = (vis->antenna_count)*(vis->antenna_count-1);
+	vis->bl_count = (vis->antenna_count)*(vis->antenna_count-1)/2;
 	vis->bl = malloc(sizeof(struct bl_data)*vis->bl_count*LEN(ha_range)); 
 	for(k=0;k<vis->bl_count;k++){
 		vis->bl[k].time_count=LEN(ha_range);
