@@ -18,6 +18,14 @@
 
 #include <mpi.h>
 
+/* ****************************************************************************************************************** */
+/* Parallel MPI version for simple imaging, this version assumes that the visibilities have already been distributed  */
+/* by frequency and time and each node reads a file which cointains the a subset of the visibilities                  */
+/* The visibility file is the same file for all nodes at this point 						      */
+/* TODO: Generate a realistic input with Oscar so that the image makes sense					      */
+/* ****************************************************************************************************************** */
+
+
 int main(int argc, char *argv[]) {
 
     // Read parameters
@@ -112,7 +120,7 @@ int main(int argc, char *argv[]) {
     struct a_kernel_data akern;
     int grid_fd = -1, image_fd = -1;
 
-    if(myid==0){ // I am the master node
+	// FIXME: All procs read same file
 	// Open files
 	// Read visibilities from file
 #ifdef READ_VIS
@@ -152,16 +160,11 @@ int main(int argc, char *argv[]) {
         }
     }
 
-	// Send necessary visibilities to worker nodes
-
-
-    }else{ // I am a worker node
-
-	// Recv visibilities into vis
-	
-
+    MPI_Barrier(MPI_COMM_WORLD);  // For the timing
+    double t,t1,t2;
+    if(myid ==0){ 
+	t1 = wtime();
     }
-
 
     // Both master and worker work on a subset of visibilities 
 
@@ -179,7 +182,6 @@ int main(int argc, char *argv[]) {
 //    open_perf_counters(&counters);
 
 
-    if(myid >0){ // initial version only workers work, cause master has all visibilities
 
     uint64_t flops = 0, mem = 0;
     if (!wkern_file) {
@@ -237,7 +239,7 @@ int main(int argc, char *argv[]) {
     printf("\nMake hermitian...\n");
     make_hermitian(uvgrid, grid_size);
 
-    // Write grid
+    // Each process Writes his grid
     if (grid_fd != -1) {
         printf("Write grid...\n");
         int i;
@@ -260,11 +262,11 @@ int main(int argc, char *argv[]) {
         fft_shift(uvgrid, grid_size);
 
 
-    } // end of worker
-
+    MPI_Reduce(uvgrid,uvgrid,grid_size*grid_size,MPI_C_DOUBLE_COMPLEX,MPI_SUM,0,MPI_COMM_WORLD);
     // Get the image by getting the real part of the uvgrid
     // and MPI_Reduction to accumulate images
     // or accumulate uvgrids and get the image
+    // FIXME We get all the grid, see if we can reduce just the image!!!
 
     // MPI_Reduction to accumulate all images
 

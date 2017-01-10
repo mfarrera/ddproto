@@ -100,5 +100,6 @@ void disable_perf_counters(struct perf_counters *counter);
 void print_perf_counters(struct perf_counters *counter,
                          uint64_t expected_flops,
                          uint64_t expected_mem);
+double wtime();
 
 #endif // GRID_H
