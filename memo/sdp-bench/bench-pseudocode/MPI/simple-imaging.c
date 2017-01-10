@@ -270,8 +270,10 @@ int main(int argc, char *argv[]) {
 
     // MPI_Reduction to accumulate all images
 
-    if(myid ==0)  // Master prints image
-    if (image_fd != -1) {
+    if(myid ==0){  // Master prints image
+        t2=wtime();
+        printf("Total time %f us\n",t2-t1);
+      if (image_fd != -1) {
         // Write real part to disk
         printf("Write image...\n");
         int i;
@@ -284,6 +286,7 @@ int main(int argc, char *argv[]) {
             write(image_fd, row, sizeof(double) * grid_size);
         }
         close(image_fd);
+     }
     }
 
     return 0;
