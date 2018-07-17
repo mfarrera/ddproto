@@ -1,5 +1,21 @@
+// SIP Jenkinsfile (CI/CD pipline)
+//
+// https://jenkins.io/doc/book/pipeline/jenkinsfile/
+//
+// Stages section:
+// - Setup
+// - Analysis
+// - Build
+// - Test
+//
+// Post section: (https://jenkins.io/doc/book/pipeline/syntax/#post)
+// - success
+// - unstable
+// - failure
+// - always
+
+
 #!/usr/bin/env groovy
-Jenkinsfile (Declarative Pipeline)
 pipeline {
     agent any
 
