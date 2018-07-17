@@ -50,6 +50,7 @@ pipeline {
 		python setup.py install
 		'''
 	    }
+	}
         stage('TestARL') {
             steps {
                 echo 'Testing ARL..'
