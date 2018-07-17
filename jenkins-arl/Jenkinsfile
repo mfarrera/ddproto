@@ -5,35 +5,85 @@
 //
 // Stages section:
 // - Setup
-// - Analysis
 // - Build
 // - Test
 //
 // Post section: (https://jenkins.io/doc/book/pipeline/syntax/#post)
-// - success
-// - unstable
-// - failure
-// - always
 
 
 pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Setup') {
             steps {
-                echo 'Building..'
+                echo 'Setting up a fresh Python virtual environment...'
+		sh '''
+		virtualenv -p `which python3` _build
+		'''
+		echo 'Activating virtual environment...'
+		sh '''
+		source _build/bin/activate
+		'''
+		echo 'Installing requirements'
+		sh '''
+		pip install -U pip setuptools
+		pip install coverage numpy
+		pip install virtualenvwrapper
+		pip install -r requirements.txt
+ 		'''
+		echo 'Adding the arl and ffiwrappers path to the virtual environment'
+		echo '(equivalent to setting up PYTHONPATH environment variable'
+		source virtualenvwrapper.sh
+		sh '''
+		add2virtualenv $WORKSPACE
+		add2virtualenv $WORKSPACE/ffiwrappers/src
+		'''
             }
         }
-        stage('Test') {
+	stage('Build'){
+	    steps {
+		echo 'Building..'
+		source _build/bin/activate
+		sh '''
+		export LDFLAGS="$(python3-config --ldflags) -lcfitsio"
+		python setup.py install
+		'''
+	    }
+        stage('TestARL') {
             steps {
-                echo 'Testing..'
+                echo 'Testing ARL..'
+		source _build/bin/activate
+		sh '''
+		export MPLBACKEND=agg
+		pip install pytest pytest-xdist pytest-cov
+		py.test tests -n 4 --verbose --cov=libs --cov=processing_components --cov=workflows --cov-report=html:coverage tests
+		'''
+ 		#Make coverage report
+		#coverage html --include=libs/*,processing_components/*,workflows/* -d coverage
+            }
+        }
+        stage('TestFfiwrappers') {
+            steps {
+                echo 'Testing ffiwrappers..'
+		source _build/bin/activate
+		sh '''
+		export ARLROOT="$WORKSPACE"
+		. tests/ffiwrapped/run-tests.sh
+		'''
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'Make documentation....'
+		source  _build/bin/activate
+		sh '''
+		export MPLBACKEND=agg
+		make -k -j -C docs html
+		# make -C docs latexpdf # Broken currently?
+		'''
             }
         }
     }
 }
+
