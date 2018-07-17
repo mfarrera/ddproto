@@ -1,3 +1,4 @@
+#!/usr/bin/env groovy
 // SIP Jenkinsfile (CI/CD pipline)
 //
 // https://jenkins.io/doc/book/pipeline/jenkinsfile/
@@ -15,7 +16,6 @@
 // - always
 
 
-#!/usr/bin/env groovy
 pipeline {
     agent any
 
