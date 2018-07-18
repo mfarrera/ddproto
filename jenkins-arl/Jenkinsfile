@@ -20,22 +20,16 @@ pipeline {
                 echo 'Setting up a fresh Python virtual environment...'
 		sh '''
 		virtualenv -p `which python3` _build
-		'''
 		echo 'Activating virtual environment...'
-		sh '''
 		source _build/bin/activate
-		'''
 		echo 'Installing requirements'
-		sh '''
 		pip install -U pip setuptools
 		pip install coverage numpy
 		pip install virtualenvwrapper
 		pip install -r requirements.txt
- 		'''
 		echo 'Adding the arl and ffiwrappers path to the virtual environment'
 		echo '(equivalent to setting up PYTHONPATH environment variable'
 		source virtualenvwrapper.sh
-		sh '''
 		add2virtualenv $WORKSPACE
 		add2virtualenv $WORKSPACE/ffiwrappers/src
 		'''
@@ -44,8 +38,8 @@ pipeline {
 	stage('Build'){
 	    steps {
 		echo 'Building..'
-		source _build/bin/activate
 		sh '''
+		source _build/bin/activate
 		export LDFLAGS="$(python3-config --ldflags) -lcfitsio"
 		python setup.py install
 		'''
@@ -54,8 +48,8 @@ pipeline {
         stage('TestARL') {
             steps {
                 echo 'Testing ARL..'
-		source _build/bin/activate
 		sh '''
+		source _build/bin/activate
 		export MPLBACKEND=agg
 		pip install pytest pytest-xdist pytest-cov
 		py.test tests -n 4 --verbose --cov=libs --cov=processing_components --cov=workflows --cov-report=html:coverage tests
@@ -67,8 +61,8 @@ pipeline {
         stage('TestFfiwrappers') {
             steps {
                 echo 'Testing ffiwrappers..'
-		source _build/bin/activate
 		sh '''
+		source _build/bin/activate
 		export ARLROOT="$WORKSPACE"
 		. tests/ffiwrapped/run-tests.sh
 		'''
@@ -77,8 +71,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Make documentation....'
-		source  _build/bin/activate
 		sh '''
+		source  _build/bin/activate
 		export MPLBACKEND=agg
 		make -k -j -C docs html
 		'''
