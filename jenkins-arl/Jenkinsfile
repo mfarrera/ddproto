@@ -17,6 +17,8 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
+		echo 'Checking out repository'
+		checkout scm
                 echo 'Setting up a fresh Python virtual environment...'
 		sh '''
 		virtualenv -p `which python3` _build
